@@ -32,5 +32,12 @@ namespace SportAssovv.Controllers
             ViewBag.Message = "Espace Administrateur";
             return View();
         }
+
+        public ActionResult Moncompte()
+        {
+            ViewBag.Message = "Mon compte/S'inscrire";
+            return View();
+        }
+
     }
 }
