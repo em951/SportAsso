@@ -398,7 +398,7 @@ FodyWeavers.xsd
 *.sln.iml
 
 # Ignore web.config file
-Web.config
+/Web.config
 
 # Ignore SportAssovv.csproj file
 SportAssovv.csproj
