@@ -11,6 +11,7 @@ namespace SportAssovv.Models
     {
         public ApplicationDbContext() : base("MaConnexionSqlServer")
         {
+      
         }
 
         public DbSet<Adherent> Adherents { get; set; }
