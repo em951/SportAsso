@@ -396,3 +396,9 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Ignore web.config file
+web.config
+
+# Ignore SportAssovv.csproj file
+SportAssovv.csproj

@@ -37,6 +37,8 @@ namespace SportAssovv.Models
         [MaxLength(64)]
         public string MotDePasse { get; set; }
 
+        public string Role { get; set; }
+
         // Propriétés de navigation
         public ICollection<DisciplineAdherent> Disciplines { get; set; }
         public ICollection<DisciplineAdherent> DisciplineAdherents { get; set; }

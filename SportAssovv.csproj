@@ -175,6 +175,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdherentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -182,6 +183,10 @@
     <Compile Include="Migrations\202311261207512_InitialCreate.cs" />
     <Compile Include="Migrations\202311261207512_InitialCreate.designer.cs">
       <DependentUpon>202311261207512_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202311262155588_AjoutDonneesAdherent.cs" />
+    <Compile Include="Migrations\202311262155588_AjoutDonneesAdherent.designer.cs">
+      <DependentUpon>202311262155588_AjoutDonneesAdherent.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Adherent.cs" />
@@ -249,6 +254,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Admin.cshtml" />
     <Content Include="Views\Home\Moncompte.cshtml" />
+    <Content Include="Views\Adherent\ListeAdherents.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -283,6 +289,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202311261207512_InitialCreate.resx">
       <DependentUpon>202311261207512_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311262155588_AjoutDonneesAdherent.resx">
+      <DependentUpon>202311262155588_AjoutDonneesAdherent.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
