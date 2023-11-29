@@ -13,7 +13,7 @@ namespace SportAssovv.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202311262155588_AjoutDonneesAdherent"; }
+            get { return "202311291348077_AjoutDonneesAdherent"; }
         }
         
         string IMigrationMetadata.Source

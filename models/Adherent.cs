@@ -8,6 +8,13 @@ namespace SportAssovv.Models
 {
     public class Adherent
     {
+        public Adherent() {
+        
+            
+        
+        
+        }
+
         [Key]
         public int AdherentId { get; set; }
 
@@ -37,6 +44,8 @@ namespace SportAssovv.Models
         [MaxLength(64)]
         public string MotDePasse { get; set; }
 
+        [Required]
+        
         public string Role { get; set; }
 
         // Propriétés de navigation
