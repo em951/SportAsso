@@ -1,8 +1,6 @@
 ﻿/* Set padding to keep content from hitting the edges */
 .body-content {
-    margin-top: 15px;
-    padding-left: 15px;
-    padding-right: 15px;
+    
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -17,4 +15,58 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+
+html, body, main, .accueil {
+    width: 100%;
+    height: 100%;
+    position: relative; /* Ajout de position relative pour que l'absolu à l'intérieur soit positionné par rapport à cela */
+}
+
+body{
+    width:100%;
+}
+
+.accueil {
+    text-align: center;
+    position: relative; /* Ajout de position relative pour que les éléments position absolue à l'intérieur soient positionnés par rapport à cela */
+}
+
+ .accueil img {
+        width: 100%; /* Assure que l'image occupe toute la largeur du conteneur */
+    }
+
+    .accueil h1 {
+        font-size: 7em;
+        margin-top: 20px;
+        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
+        position: absolute; /* Position absolue par rapport à l'accueil */
+        top: 50%; /* Positionne le haut du texte au centre de l'accueil */
+        left: 50%; /* Positionne la gauche du texte au centre de l'accueil */
+        transform: translate(-50%, -50%); /* Centre le texte parfaitement */
+    }
+
+
+.about-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.text-container {
+    max-width: 600px;
+    font-family: 'Lucida Bright';
+    background-color: #ebe3ef;
+    text-align: justify; /* Texte justifié */
+}
+
+.about-container h3 {
+    font-family: 'Goudy Old Style';
+    margin-left: 20px; /* Marge à gauche */
+    margin-right: 20px; /* Marge à droite */
 }

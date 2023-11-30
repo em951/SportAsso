@@ -4,27 +4,32 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mon application ASP.NET</title>
+    <title>@ViewBag.Title - SportAsso </title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light">
         <div class="container">
-            @Html.ActionLink("SportAsso", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Activer/désactiver la navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Accueil", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Qui Sommes Nous?", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Contactez-nous", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Espace Administrateur", "Admin", "Home", new { area = "" }, new { @class = "nav-link" });</li>
-                    <li>@Html.ActionLink("Mon compte/S'inscrire", "Moncompte", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                </ul>
-            </div>
+            <ul class="navbar-nav">
+                @Html.ActionLink("SportAsso", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </ul>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Activer/désactiver la navigation" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li>@Html.ActionLink("Accueil", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Qui Sommes Nous?", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Contactez-nous", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-outline-dark rounded-pill" style="background-color: #ebe3ef;" href="@Url.Action("Admin", "Home", new { area = "" })">Espace Administrateur</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-outline-dark rounded-pill" style="background-color: #ebe3ef;" href="@Url.Action("Moncompte", "Home", new { area = "" })">Mon compte/S'inscrire</a>
+                    </ul>
+                </div>
         </div>
     </nav>
     <div class="container body-content">
