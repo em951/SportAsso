@@ -15,10 +15,7 @@
 
         protected override void Seed(SportAssovv.Models.ApplicationDbContext context)
         {
-        context.Adherents.AddOrUpdate(
-        new Adherent { Nom = "Jackson", Prenom = "Lise" },
-        new Adherent { Nom = "Park", Prenom = "Seojun" }
-         );
+        
 
         }
 

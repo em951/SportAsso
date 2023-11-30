@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "ResetMotPasse";
+}
+
+<h2>Reset Mot de Passe</h2>
+
+@using (Html.BeginForm("ResetMotPasse", "Adherent", FormMethod.Post))
+{
+    <div>
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email" />
+    </div>
+    <div>
+        <label for="nouveauMotPasse">Nouveau Mot de Passe:</label>
+        <input type="password" name="nouveauMotPasse" id="nouveauMotPasse" />
+    </div>
+    <button type="submit">Reset Mot de Passe</button>
+}

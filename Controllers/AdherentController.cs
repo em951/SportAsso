@@ -22,6 +22,42 @@ namespace SportAssovv.Controllers
             _context = context;
         }
 
+        //Action pour inscription dans la liste des adhérents (formulaire d'inscription)
+        public ActionResult Inscription()
+        {
+            return View();
+        }
+
+        //Action pour refaire le mot de passe
+
+        public ActionResult ResetMotPasse()
+        {
+            return View(); 
+        }
+
+        //Action pour refaire le mot de passe
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ResetMotPasse(string email, string nouvelleMotPasse)
+        {
+            // Verifier si l'email existe dans la base de données 
+            var adherent = _context.Adherents.SingleOrDefault(a => a.Email == email);
+
+            if (adherent == null)
+            {
+                ModelState.AddModelError("", "Email non trouvé.");
+                return View();
+            }
+
+            // Nouvelle Mot de Passe
+            adherent.MotDePasse = nouvelleMotPasse;
+            _context.SaveChanges();
+
+            // Redirection pour la page de inscription
+            return RedirectToAction("Inscription");
+        }
+
         // Action pour afficher la liste des adhérents
         public ActionResult ListeAdherents()
         {
@@ -48,12 +84,25 @@ namespace SportAssovv.Controllers
         public ActionResult Create(Adherent adherent)
         {
             if (ModelState.IsValid)
-            {
+           {
                 _context.Adherents.Add(adherent);
+                _context.SaveChanges();
+                // Après avoir enregistré avec succès l'Adhérent, créez automatiquement
+                // une nouvelle entrée dans la table DossierInscription
+                DossierInscription dossier = new DossierInscription
+                {
+                    AdherentId = adherent.AdherentId, // ID d'adhérent nouvellement créé
+                    StatutInscription = "nouveau" // Status inscription
+                };
+
+                _context.DossiersInscription.Add(dossier);
                 _context.SaveChanges();
                 return RedirectToAction("ListeAdherents");
             }
-            return View(adherent);
+
+           
+
+            return View("Index");
         }
 
         // GET: Adherent/Edit/5
