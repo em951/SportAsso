@@ -25,5 +25,9 @@ namespace SportAssovv.Models
 
 
         public ICollection<Paiement> Paiements { get; set; }
+
+        public bool Certificat_medical { get; set; }
+        public bool Assurance { get; set; }
+        public bool Dossier_complet { get; set; }
     }
 }

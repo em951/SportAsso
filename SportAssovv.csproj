@@ -184,6 +184,10 @@
     <Compile Include="Migrations\202311261207512_InitialCreate.designer.cs">
       <DependentUpon>202311261207512_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202311301634339_AjoutDonneesAdherent1.cs" />
+    <Compile Include="Migrations\202311301634339_AjoutDonneesAdherent1.designer.cs">
+      <DependentUpon>202311301634339_AjoutDonneesAdherent1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AjoutDonneesAdherent.cs" />
     <Compile Include="Migrations\AjoutDonneesAdherent.designer.cs">
       <DependentUpon>AjoutDonneesAdherent.cs</DependentUpon>
@@ -240,13 +244,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -258,6 +255,13 @@
     <Content Include="Views\Home\Moncompte.cshtml" />
     <Content Include="Views\Adherent\ListeAdherents.cshtml" />
     <Content Include="Views\Adherent\Test.cshtml" />
+    <Content Include="Web.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -292,6 +296,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202311261207512_InitialCreate.resx">
       <DependentUpon>202311261207512_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311301634339_AjoutDonneesAdherent1.resx">
+      <DependentUpon>202311301634339_AjoutDonneesAdherent1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\AjoutDonneesAdherent.resx">
       <DependentUpon>AjoutDonneesAdherent.cs</DependentUpon>
