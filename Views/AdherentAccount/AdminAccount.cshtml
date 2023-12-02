@@ -1,0 +1,18 @@
+﻿
+@model SportAssovv.Models.Adherent
+
+@{
+    ViewBag.Title = "AdminAccount";
+}
+
+<h2>Compte Administrateur</h2>
+
+<h2>Bienvenue, @Model.Adherent.Prenom!</h2>
+
+<button>Disciplines</button>
+<button>Gestion des Adherents</button>
+
+<!-- Bouton pour rediriger vers la vue qui attend un modèle IEnumerable<SportAssovv.Models.Contact> -->
+<form action="@Url.Action("Index", "Contacts")" method="GET">
+    <input type="submit" value="Liste de Messages" class="btn btn-primary" />
+</form>

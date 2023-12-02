@@ -8,8 +8,9 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light ml-auto">
         <div class="container">
             <ul class="navbar-nav">
                 @Html.ActionLink("SportAsso", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
@@ -24,7 +25,7 @@
                         <li>@Html.ActionLink("Qui Sommes Nous?", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Contactez-nous", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                         <li class="nav-item">
-                            <a class="nav-link btn btn-outline-dark rounded-pill" style="background-color: #ebe3ef;" href="@Url.Action("Admin", "Home", new { area = "" })">Espace Administrateur</a>
+                            <a class="nav-link btn btn-outline-dark rounded-pill" style="background-color: #ebe3ef;" href="@Url.Action("LoginAdmin", "Home", new { area = "" })">Espace Administrateur</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link btn btn-outline-dark rounded-pill" style="background-color: #ebe3ef;" href="@Url.Action("Moncompte", "Home", new { area = "" })">Mon compte/S'inscrire</a>

@@ -33,7 +33,11 @@ namespace SportAssovv.Models
             // Configure la clé primaire composite pour DisciplineSection
             modelBuilder.Entity<DisciplineSection>().HasKey(ds => new { ds.DisciplineId, ds.SectionId });
 
-           
+            //relation 1..1 adherent dossier 
+            modelBuilder.Entity<Adherent>()
+                .HasOptional(a => a.DossierInscription) //adherent avec dossier optionel
+                .WithRequired(di => di.Adherent); //dossier exige un adherent
+
         }
 
     }

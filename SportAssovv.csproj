@@ -181,6 +181,7 @@
     <Compile Include="Controllers\AdherentController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SectionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -192,9 +193,13 @@
     <Compile Include="Migrations\202311301634339_AjoutDonneesAdherent1.designer.cs">
       <DependentUpon>202311301634339_AjoutDonneesAdherent1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202311302058469_CreateContactTable.cs" />
-    <Compile Include="Migrations\202311302058469_CreateContactTable.designer.cs">
-      <DependentUpon>202311302058469_CreateContactTable.cs</DependentUpon>
+    <Compile Include="Migrations\202312021702573_AdherentDossierLiaison.cs" />
+    <Compile Include="Migrations\202312021702573_AdherentDossierLiaison.designer.cs">
+      <DependentUpon>202312021702573_AdherentDossierLiaison.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312021708546_CreateContact.cs" />
+    <Compile Include="Migrations\202312021708546_CreateContact.designer.cs">
+      <DependentUpon>202312021708546_CreateContact.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AjoutDonneesAdherent.cs" />
     <Compile Include="Migrations\AjoutDonneesAdherent.designer.cs">
@@ -209,12 +214,9 @@
     <Compile Include="Models\DisciplineAdherent.cs" />
     <Compile Include="Models\DisciplineSection.cs" />
     <Compile Include="Models\DossierInscription.cs" />
+    <Compile Include="Models\DossierPaiement.cs" />
     <Compile Include="Models\Paiement.cs" />
     <Compile Include="Models\Section.cs" />
-    <Compile Include="Models\ViewModels\AdherentDossierPaiementViewModel.cs" />
-    <Compile Include="Models\ViewModels\AdherentDossierViewModel.cs" />
-    <Compile Include="Models\ViewModels\DisciplineAdherentViewModel.cs" />
-    <Compile Include="Models\ViewModels\DisciplineSectionCreneauxViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -264,10 +266,8 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Admin.cshtml" />
     <Content Include="Views\Home\Moncompte.cshtml" />
     <Content Include="Views\Adherent\ListeAdherents.cshtml" />
-    <Content Include="Views\Adherent\Test.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Views\Adherent\Inscription.cshtml" />
     <Content Include="Views\Adherent\ResetMotPasse.cshtml" />
@@ -277,6 +277,8 @@
     <Content Include="Views\Contacts\Details.cshtml" />
     <Content Include="Views\Contacts\Edit.cshtml" />
     <Content Include="Views\Contacts\Index.cshtml" />
+    <Content Include="Views\AdherentAccount\AdminAccount.cshtml" />
+    <Content Include="Views\Home\LoginAdmin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -286,6 +288,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Section\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -321,8 +324,11 @@
     <EmbeddedResource Include="Migrations\202311301634339_AjoutDonneesAdherent1.resx">
       <DependentUpon>202311301634339_AjoutDonneesAdherent1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202311302058469_CreateContactTable.resx">
-      <DependentUpon>202311302058469_CreateContactTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202312021702573_AdherentDossierLiaison.resx">
+      <DependentUpon>202312021702573_AdherentDossierLiaison.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312021708546_CreateContact.resx">
+      <DependentUpon>202312021708546_CreateContact.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\AjoutDonneesAdherent.resx">
       <DependentUpon>AjoutDonneesAdherent.cs</DependentUpon>

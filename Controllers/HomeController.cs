@@ -27,7 +27,7 @@ namespace SportAssovv.Controllers
             return View();
         }
 
-        public ActionResult Admin()
+        public ActionResult LoginAdmin()
         {
             ViewBag.Message = "Espace Administrateur";
             return View();

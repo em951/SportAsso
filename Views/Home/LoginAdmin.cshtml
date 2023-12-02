@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "LoginAdmin";
+}
+
+
+<h2>Connexion</h2>
+@using (Html.BeginForm("LoginAdmin", "AdherentAccount", FormMethod.Post))
+{
+    <label for="email">E-mail</label>
+    <input type="email" id="email" name="email" />
+    <label for="password">Mot de Passe</label>
+    <input type="password" id="password" name="password" />
+    <button type="submit">Se connecter</button>
+}
+
+@Html.ActionLink("Mot de passe oublié ?", "ResetMotPasse", "Adherent", null, new { @class = "btn btn-primary" })

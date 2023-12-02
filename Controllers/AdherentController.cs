@@ -24,7 +24,7 @@ namespace SportAssovv.Controllers
 
         //Action pour inscription dans la liste des adhérents (formulaire d'inscription)
         public ActionResult Inscription()
-        {
+        { //repeter l'action create? 
             return View();
         }
 

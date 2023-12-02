@@ -1,5 +1,4 @@
 ﻿using SportAssovv.Models;
-using SportAssovv.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,31 +16,39 @@ namespace SportAssovv.Controllers
             _context = new ApplicationDbContext();
         }
 
-        [HttpPost] // Este atributo indica que esta ação responde apenas a solicitações POST
+        [HttpPost] //Cet attribut indique que cette action répond uniquement aux requêtes POST
         public ActionResult Login(string email, string password)
         {
-            // Verificar se o usuário com o email fornecido existe no banco de dados
+            // Vérifiez si l'utilisateur avec l'e-mail fourni existe dans la base de données
             var user = _context.Adherents.SingleOrDefault(a => a.Email == email);
 
             if (user != null && user.MotDePasse == password)
             {
-                var dossierInscription = _context.DossiersInscription
-                                 .SingleOrDefault(d => d.AdherentId == user.AdherentId);
-
-                var viewModel = new AdherentDossierViewModel
-                {
-                    Adherent = user,
-                    DossierInscription = dossierInscription
-                };
-
-                // Se as credenciais estiverem corretas, retornar a visualização com os detalhes do usuário e do DossierInscription
-                return View("AdherentAccount", viewModel);
+               // Si les informations d'identification sont correctes, renvoyez la vue avec les détails de l'utilisateur et du DossierInscription.
+                return View("AdherentAccount");
             }
             else
             {
-                // Se as credenciais estiverem incorretas, redirecionar de volta para a página de login
-                return RedirectToAction("Index");
+                // Si les informations d'identification sont incorrectes, redirigez vers la page de connexion
+                return View("Moncompte");
             }
+        }
+
+
+        [HttpPost]
+        public ActionResult LoginAdmin(string email, string password) {
+            var user = _context.Adherents.SingleOrDefault(a => a.Email == email);
+            if (user != null && user.MotDePasse == password)
+            {
+                if (user.Role == "Admin")
+                {
+                    return View("AdminAccount"); 
+                }
+
+            }
+           
+            return View("LoginAdmin"); 
+            
         }
 
     }

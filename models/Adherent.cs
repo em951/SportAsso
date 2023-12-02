@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -9,10 +10,7 @@ namespace SportAssovv.Models
     public class Adherent
     {
         public Adherent() {
-        
-            
-        
-        
+              
         }
 
         [Key]
@@ -47,6 +45,9 @@ namespace SportAssovv.Models
         [Required]
         
         public string Role { get; set; }
+
+        //1..1 adherent dossier
+        public virtual DossierInscription DossierInscription { get; set; }
 
         // Propriétés de navigation
         public ICollection<DisciplineAdherent> Disciplines { get; set; }
