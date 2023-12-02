@@ -290,6 +290,15 @@
     <Content Include="Views\DossierInscriptions\Details.cshtml" />
     <Content Include="Views\DossierInscriptions\Edit.cshtml" />
     <Content Include="Views\DossierInscriptions\Index.cshtml" />
+    <Content Include="Views\Adherent\Create.cshtml" />
+    <Content Include="Views\Adherent\Delete.cshtml" />
+    <Content Include="Views\Adherent\Index.cshtml" />
+    <Content Include="Views\Adherent\Edit.cshtml" />
+    <Content Include="Views\AdherentsCOPIE\Create.cshtml" />
+    <Content Include="Views\AdherentsCOPIE\Delete.cshtml" />
+    <Content Include="Views\AdherentsCOPIE\Details.cshtml" />
+    <Content Include="Views\AdherentsCOPIE\Edit.cshtml" />
+    <Content Include="Views\AdherentsCOPIE\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

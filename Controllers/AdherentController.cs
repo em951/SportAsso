@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -11,6 +12,7 @@ namespace SportAssovv.Controllers
     public class AdherentController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         public AdherentController()
         {
@@ -20,6 +22,12 @@ namespace SportAssovv.Controllers
         public AdherentController(ApplicationDbContext context)
         {
             _context = context;
+        }
+
+        public ActionResult Index()
+        {
+            var adherents = db.Adherents.Include(a => a.DossierInscription);
+            return View(adherents.ToList());
         }
 
         //Action pour inscription dans la liste des adhérents (formulaire d'inscription)
@@ -58,78 +66,88 @@ namespace SportAssovv.Controllers
             return RedirectToAction("Inscription");
         }
 
-        // Action pour afficher la liste des adhérents
-        public ActionResult ListeAdherents()
+        // GET: Adherents/Details/5
+        public ActionResult Details(int? id)
         {
-            var adherents = _context.Adherents.ToList();
-            return View(adherents);
-        }
-
-        // GET: Adherent/Details/5
-        public ActionResult Details(int id)
-        {
-            var adherent = _context.Adherents.Find(id);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Adherent adherent = db.Adherents.Find(id);
+            if (adherent == null)
+            {
+                return HttpNotFound();
+            }
             return View(adherent);
         }
 
         // GET: Adherent/Create
         public ActionResult Create()
         {
+            ViewBag.AdherentId = new SelectList(db.DossiersInscription, "AdherentId", "StatutInscription");
             return View();
         }
+
 
         // POST: Adherent/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Adherent adherent)
+        public ActionResult Create([Bind(Include = "AdherentId,Nom,Prenom,Adresse,Email,Telephone,DateNaissance,MotDePasse,Role")] Adherent adherent)
         {
             if (ModelState.IsValid)
-           {
-                _context.Adherents.Add(adherent);
-                _context.SaveChanges();
-                // Après avoir enregistré avec succès l'Adhérent, créez automatiquement
-                // une nouvelle entrée dans la table DossierInscription
-                DossierInscription dossier = new DossierInscription
-                {
-                    AdherentId = adherent.AdherentId, // ID d'adhérent nouvellement créé
-                    StatutInscription = "nouveau" // Status inscription
-                };
-
-                _context.DossiersInscription.Add(dossier);
-                _context.SaveChanges();
-                return RedirectToAction("ListeAdherents");
+            {
+                db.Adherents.Add(adherent);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
 
-           
-
-            return View("Index");
+            ViewBag.AdherentId = new SelectList(db.DossiersInscription, "AdherentId", "StatutInscription", adherent.AdherentId);
+            return View(adherent);
         }
 
         // GET: Adherent/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            var adherent = _context.Adherents.Find(id);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Adherent adherent = db.Adherents.Find(id);
+            if (adherent == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.AdherentId = new SelectList(db.DossiersInscription, "AdherentId", "StatutInscription", adherent.AdherentId);
             return View(adherent);
         }
 
         // POST: Adherent/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Adherent adherent)
+        public ActionResult Edit([Bind(Include = "AdherentId,Nom,Prenom,Adresse,Email,Telephone,DateNaissance,MotDePasse,Role")] Adherent adherent)
         {
             if (ModelState.IsValid)
             {
-                _context.Entry(adherent).State = EntityState.Modified;
-                _context.SaveChanges();
-                return RedirectToAction("ListeAdherents");
+                db.Entry(adherent).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
+            ViewBag.AdherentId = new SelectList(db.DossiersInscription, "AdherentId", "StatutInscription", adherent.AdherentId);
             return View(adherent);
         }
 
         // GET: Adherent/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            var adherent = _context.Adherents.Find(id);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Adherent adherent = db.Adherents.Find(id);
+            if (adherent == null)
+            {
+                return HttpNotFound();
+            }
             return View(adherent);
         }
 
@@ -138,11 +156,13 @@ namespace SportAssovv.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var adherent = _context.Adherents.Find(id);
-            _context.Adherents.Remove(adherent);
-            _context.SaveChanges();
-            return RedirectToAction("ListeAdherents");
+            Adherent adherent = db.Adherents.Find(id);
+            db.Adherents.Remove(adherent);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
+
+
     }
 
 }

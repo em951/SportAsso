@@ -59,22 +59,6 @@ namespace SportAssovv.Controllers
         }
 
 
-        //Post contacts visitant page envoyer message
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-
-        public ActionResult EnvoyerMessage([Bind(Include = "ID,Nome,Email,Mensagem")] Contact contact)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Contacts.Add(contact);
-                db.SaveChanges();
-                return View("Contact", contact); // redirection pour la View Home/Contact.cshtml
-            }
-
-            return View(contact);
-        }
-
         // GET: Contacts/Edit/5
         public ActionResult Edit(int? id)
         {

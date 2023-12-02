@@ -8,10 +8,10 @@
 
 <h2>Bienvenue</h2>
 
-<button>Disciplines</button>
-<button>Gestion des Adherents</button>
+@Html.ActionLink("Disciplines", "Create", "Discipline", null, new { @class = "btn btn-light mb-3" })
 
-<!-- Bouton pour rediriger vers la vue qui attend un modèle IEnumerable<SportAssovv.Models.Contact> -->
-<form action="@Url.Action("Index", "Contacts")" method="GET">
-    <input type="submit" value="Liste de Messages" class="btn btn-primary" />
-</form>
+@Html.ActionLink("Gestion des Adherents", "Index", "Adherent", null, new { @class = "btn btn-light mb-3" })
+
+@Html.ActionLink("Liste de Messages", "Index", "Contacts", null, new { @class = "btn btn-light mb-3" })
+
+
