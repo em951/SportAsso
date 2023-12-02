@@ -180,6 +180,8 @@
     <Compile Include="Controllers\AdherentAccountController.cs" />
     <Compile Include="Controllers\AdherentController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
+    <Compile Include="Controllers\DisciplineController.cs" />
+    <Compile Include="Controllers\DossierInscriptionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SectionController.cs" />
     <Compile Include="Global.asax.cs">
@@ -214,7 +216,6 @@
     <Compile Include="Models\DisciplineAdherent.cs" />
     <Compile Include="Models\DisciplineSection.cs" />
     <Compile Include="Models\DossierInscription.cs" />
-    <Compile Include="Models\DossierPaiement.cs" />
     <Compile Include="Models\Paiement.cs" />
     <Compile Include="Models\Section.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -279,6 +280,16 @@
     <Content Include="Views\Contacts\Index.cshtml" />
     <Content Include="Views\AdherentAccount\AdminAccount.cshtml" />
     <Content Include="Views\Home\LoginAdmin.cshtml" />
+    <Content Include="Views\Discipline\Create.cshtml" />
+    <Content Include="Views\Discipline\Delete.cshtml" />
+    <Content Include="Views\Discipline\Details.cshtml" />
+    <Content Include="Views\Discipline\Edit.cshtml" />
+    <Content Include="Views\Discipline\Index.cshtml" />
+    <Content Include="Views\DossierInscriptions\Create.cshtml" />
+    <Content Include="Views\DossierInscriptions\Delete.cshtml" />
+    <Content Include="Views\DossierInscriptions\Details.cshtml" />
+    <Content Include="Views\DossierInscriptions\Edit.cshtml" />
+    <Content Include="Views\DossierInscriptions\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,27 +1,100 @@
-﻿
+﻿@model SportAssovv.Models.Contact
 @{
     ViewBag.Title = "Contact";
 }
-<main aria-labelledby="title">
-    <h3>@ViewBag.Message</h3>
+<style>
+    .background-img {
+        background-image: url('../../Images/pageContact.png');
+        height: 100vh; /* Ajuste conforme necessário */
+    }
+</style>
 
-    <address>
-        1251 Rue des Universités <br />
-        38400 Saint-Martin-d'Hères <br />
-        <br />
-        <abbr title="Phone">P:</abbr>
-        (+33) 04 76 82 59 00
-    </address>
+<section class="background-image">
 
-    <address>
-        <strong>Horaires:</strong>
-        Lundi au Vendredi <br />
-        8h30 h à 20h00 <br />
+    <main class="container-fluid">
 
-        Samedi <br />
-        8:30 h à 16h00<br />
+        <div class="background-img">
+            <div class="row justify-content-md-center">
 
-        Fermer les dimanches  <a href="mailto:hello@sportasso.com">Support@example.com</a><br />
-    </address>
 
-    <button>Vous voulez nous envoyer une message?</button>
+
+
+                <div class="col text-black">
+
+                    <!-- Conteúdo do formulário ou informações -->
+                    <h3>@ViewBag.Message</h3>
+
+                    <address>
+                        1251 Rue des Universités <br />
+                        38400 Saint-Martin-d'Hères <br />
+                        <br />
+                        <abbr title="Phone">P:</abbr>
+                        (+33) 04 76 82 59 00
+                    </address>
+
+                    <address>
+                        <strong>Horaires:</strong>
+                        Lundi au Vendredi <br />
+                        8h30 h à 20h00 <br />
+
+                        Samedi <br />
+                        8:30 h à 16h00<br />
+
+                        Fermé les dimanches  <a href="mailto:hello@sportasso.com">Support@example.com</a><br />
+                    </address>
+
+                </div>
+
+                <div class="col text-black">
+                    @using (Html.BeginForm("Create", "Contacts", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            <h4>Contact</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Mensagem, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextAreaFor(model => model.Mensagem, new { @class = "form-control mb-3", rows = 5 })
+                                    @Html.ValidationMessageFor(model => model.Mensagem, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Envoyer" class="btn btn-light btn-sm" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <p>Follow Us</p>
+                    <img />
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </main>
+
+</section>

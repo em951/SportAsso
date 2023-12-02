@@ -38,9 +38,10 @@ namespace SportAssovv.Controllers
         [HttpPost]
         public ActionResult LoginAdmin(string email, string password) {
             var user = _context.Adherents.SingleOrDefault(a => a.Email == email);
+            var role = user.Role.ToLower();
             if (user != null && user.MotDePasse == password)
             {
-                if (user.Role == "Admin")
+                if (role == "admin") 
                 {
                     return View("AdminAccount"); 
                 }

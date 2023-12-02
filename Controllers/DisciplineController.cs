@@ -10,124 +10,107 @@ using SportAssovv.Models;
 
 namespace SportAssovv.Controllers
 {
-    public class ContactsController : Controller
+    public class DisciplineController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Contacts
+        // GET: Discipline
         public ActionResult Index()
         {
-            return View(db.Contacts.ToList());
+            return View(db.Disciplines.ToList());
         }
 
-        // GET: Contacts/Details/5
+        // GET: Discipline/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contact contact = db.Contacts.Find(id);
-            if (contact == null)
+            Discipline discipline = db.Disciplines.Find(id);
+            if (discipline == null)
             {
                 return HttpNotFound();
             }
-            return View(contact);
+            return View(discipline);
         }
 
-        // GET: Contacts/Create
+        // GET: Discipline/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Contacts/Create
+        // POST: Discipline/Create
         // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Nome,Email,Mensagem")] Contact contact)
+        public ActionResult Create([Bind(Include = "DisciplineId,NomDiscipline")] Discipline discipline)
         {
             if (ModelState.IsValid)
             {
-                db.Contacts.Add(contact);
+                db.Disciplines.Add(discipline);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(contact);
+            return View(discipline);
         }
 
-
-        //Post contacts visitant page envoyer message
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-
-        public ActionResult EnvoyerMessage([Bind(Include = "ID,Nome,Email,Mensagem")] Contact contact)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Contacts.Add(contact);
-                db.SaveChanges();
-                return View("Contact", contact); // redirection pour la View Home/Contact.cshtml
-            }
-
-            return View(contact);
-        }
-
-        // GET: Contacts/Edit/5
+        // GET: Discipline/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contact contact = db.Contacts.Find(id);
-            if (contact == null)
+            Discipline discipline = db.Disciplines.Find(id);
+            if (discipline == null)
             {
                 return HttpNotFound();
             }
-            return View(contact);
+            return View(discipline);
         }
 
-        // POST: Contacts/Edit/5
+        // POST: Discipline/Edit/5
         // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Nome,Email,Mensagem")] Contact contact)
+        public ActionResult Edit([Bind(Include = "DisciplineId,NomDiscipline")] Discipline discipline)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(contact).State = EntityState.Modified;
+                db.Entry(discipline).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(contact);
+            return View(discipline);
         }
 
-        // GET: Contacts/Delete/5
+        // GET: Discipline/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contact contact = db.Contacts.Find(id);
-            if (contact == null)
+            Discipline discipline = db.Disciplines.Find(id);
+            if (discipline == null)
             {
                 return HttpNotFound();
             }
-            return View(contact);
+            return View(discipline);
         }
 
-        // POST: Contacts/Delete/5
+        // POST: Discipline/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Contact contact = db.Contacts.Find(id);
-            db.Contacts.Remove(contact);
+            Discipline discipline = db.Disciplines.Find(id);
+            db.Disciplines.Remove(discipline);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

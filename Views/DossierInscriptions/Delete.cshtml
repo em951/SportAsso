@@ -1,0 +1,72 @@
+﻿@model SportAssovv.Models.DossierInscription
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>DossierInscription</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Adherent.Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adherent.Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DossierId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DossierId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatutInscription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatutInscription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Certificat_medical)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Certificat_medical)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Assurance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Assurance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dossier_complet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dossier_complet)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

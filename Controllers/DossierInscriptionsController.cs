@@ -10,124 +10,112 @@ using SportAssovv.Models;
 
 namespace SportAssovv.Controllers
 {
-    public class ContactsController : Controller
+    public class DossierInscriptionsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Contacts
+        // GET: DossierInscriptions
         public ActionResult Index()
         {
-            return View(db.Contacts.ToList());
+            var dossiersInscription = db.DossiersInscription.Include(d => d.Adherent);
+            return View(dossiersInscription.ToList());
         }
 
-        // GET: Contacts/Details/5
+        // GET: DossierInscriptions/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contact contact = db.Contacts.Find(id);
-            if (contact == null)
+            DossierInscription dossierInscription = db.DossiersInscription.Find(id);
+            if (dossierInscription == null)
             {
                 return HttpNotFound();
             }
-            return View(contact);
+            return View(dossierInscription);
         }
 
-        // GET: Contacts/Create
+        // GET: DossierInscriptions/Create
         public ActionResult Create()
         {
+            ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom");
             return View();
         }
 
-        // POST: Contacts/Create
+        // POST: DossierInscriptions/Create
         // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Nome,Email,Mensagem")] Contact contact)
+        public ActionResult Create([Bind(Include = "AdherentId,DossierId,StatutInscription,Certificat_medical,Assurance,Dossier_complet")] DossierInscription dossierInscription)
         {
             if (ModelState.IsValid)
             {
-                db.Contacts.Add(contact);
+                db.DossiersInscription.Add(dossierInscription);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(contact);
+            ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", dossierInscription.AdherentId);
+            return View(dossierInscription);
         }
 
-
-        //Post contacts visitant page envoyer message
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-
-        public ActionResult EnvoyerMessage([Bind(Include = "ID,Nome,Email,Mensagem")] Contact contact)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Contacts.Add(contact);
-                db.SaveChanges();
-                return View("Contact", contact); // redirection pour la View Home/Contact.cshtml
-            }
-
-            return View(contact);
-        }
-
-        // GET: Contacts/Edit/5
+        // GET: DossierInscriptions/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contact contact = db.Contacts.Find(id);
-            if (contact == null)
+            DossierInscription dossierInscription = db.DossiersInscription.Find(id);
+            if (dossierInscription == null)
             {
                 return HttpNotFound();
             }
-            return View(contact);
+            ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", dossierInscription.AdherentId);
+            return View(dossierInscription);
         }
 
-        // POST: Contacts/Edit/5
+        // POST: DossierInscriptions/Edit/5
         // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Nome,Email,Mensagem")] Contact contact)
+        public ActionResult Edit([Bind(Include = "AdherentId,DossierId,StatutInscription,Certificat_medical,Assurance,Dossier_complet")] DossierInscription dossierInscription)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(contact).State = EntityState.Modified;
+                db.Entry(dossierInscription).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(contact);
+            ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", dossierInscription.AdherentId);
+            return View(dossierInscription);
         }
 
-        // GET: Contacts/Delete/5
+        // GET: DossierInscriptions/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contact contact = db.Contacts.Find(id);
-            if (contact == null)
+            DossierInscription dossierInscription = db.DossiersInscription.Find(id);
+            if (dossierInscription == null)
             {
                 return HttpNotFound();
             }
-            return View(contact);
+            return View(dossierInscription);
         }
 
-        // POST: Contacts/Delete/5
+        // POST: DossierInscriptions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Contact contact = db.Contacts.Find(id);
-            db.Contacts.Remove(contact);
+            DossierInscription dossierInscription = db.DossiersInscription.Find(id);
+            db.DossiersInscription.Remove(dossierInscription);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

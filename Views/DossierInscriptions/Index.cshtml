@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SportAssovv.Models.DossierInscription>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Adherent.Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DossierId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatutInscription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Certificat_medical)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Assurance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dossier_complet)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adherent.Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DossierId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatutInscription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Certificat_medical)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Assurance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dossier_complet)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AdherentId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AdherentId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AdherentId })
+        </td>
+    </tr>
+}
+
+</table>
