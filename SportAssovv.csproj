@@ -270,7 +270,7 @@
     <Content Include="Views\Home\Moncompte.cshtml" />
     <Content Include="Views\Adherent\ListeAdherents.cshtml" />
     <Content Include="Web.config" />
-    <Content Include="Views\Adherent\Inscription.cshtml" />
+    <Content Include="Views\Adherent\Register.cshtml" />
     <Content Include="Views\Adherent\ResetMotPasse.cshtml" />
     <Content Include="Views\AdherentAccount\AdherentAccount.cshtml" />
     <Content Include="Views\Contacts\Create.cshtml" />
@@ -294,11 +294,7 @@
     <Content Include="Views\Adherent\Delete.cshtml" />
     <Content Include="Views\Adherent\Index.cshtml" />
     <Content Include="Views\Adherent\Edit.cshtml" />
-    <Content Include="Views\AdherentsCOPIE\Create.cshtml" />
-    <Content Include="Views\AdherentsCOPIE\Delete.cshtml" />
-    <Content Include="Views\AdherentsCOPIE\Details.cshtml" />
-    <Content Include="Views\AdherentsCOPIE\Edit.cshtml" />
-    <Content Include="Views\AdherentsCOPIE\Index.cshtml" />
+    <Content Include="Views\Home\Disciplines.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

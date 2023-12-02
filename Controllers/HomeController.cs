@@ -39,5 +39,11 @@ namespace SportAssovv.Controllers
             return View();
         }
 
+        public ActionResult Disciplines()
+        {
+            ViewBag.Message = "Disciplines";
+            return View();
+        }
+
     }
 }

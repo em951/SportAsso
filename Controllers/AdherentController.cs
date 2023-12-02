@@ -105,6 +105,31 @@ namespace SportAssovv.Controllers
             return View(adherent);
         }
 
+        // GET: Adherent/Register
+        public ActionResult Register()
+        {
+            ViewBag.AdherentId = new SelectList(db.DossiersInscription, "AdherentId", "StatutInscription");
+            return View();
+        }
+
+        // POST: Adherent/Register
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register([Bind(Include = "AdherentId,Nom,Prenom,Adresse,Email,Telephone,DateNaissance,MotDePasse,Role")] Adherent adherent)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Adherents.Add(adherent);
+                db.SaveChanges();
+                return View("~/Views/Home/Moncompte.cshtml");
+            }
+
+            ViewBag.AdherentId = new SelectList(db.DossiersInscription, "AdherentId", "StatutInscription", adherent.AdherentId);
+            return View(adherent);
+        }
+
+
+
         // GET: Adherent/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -161,6 +186,7 @@ namespace SportAssovv.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
 
 
     }
