@@ -196,6 +196,39 @@ namespace SportAssovv.Controllers
             return View(adherent);
         }
 
+        // GET: Adherents/EditMembre/5
+        public ActionResult EditMembre(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Adherent adherent = db.Adherents.Find(id);
+            if (adherent == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.AdherentId = new SelectList(db.DossierInscription, "AdherentId", "StatutInscription", adherent.AdherentId);
+            return View(adherent);
+        }
+
+        // POST: Adherents/EditMembre/5
+        // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
+        // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditMembre([Bind(Include = "AdherentId,Nom,Prenom,Adresse,Email,Telephone,DateNaissance,MotDePasse,Role")] Adherent adherent)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(adherent).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.AdherentId = new SelectList(db.DossierInscription, "AdherentId", "StatutInscription", adherent.AdherentId);
+            return View(adherent);
+        }
+
 
         protected override void Dispose(bool disposing)
         {

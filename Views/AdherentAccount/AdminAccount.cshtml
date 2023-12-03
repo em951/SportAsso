@@ -2,18 +2,39 @@
 
 @{
     ViewBag.Title = "AdminAccount";
+    // Vérifiez que les détails de l'adhérent sont dans la session
+    var adherentDetails = Session["AdherentDetails"] as SportAssovv.Models.Adherent;
 }
 
-<h2>Compte Administrateur</h2>
+<style>
+    .background-img {
+        background-image: url('../../Images/compteAdmin.png');
+        height: 100vh;
+    }
+</style>
+<section class="background-img">
 
-<h2>Bienvenue</h2>
+    @if (adherentDetails != null)
+    {
+        <h2 class="text-white">Compte Administrateur</h2>
 
-@Html.ActionLink("Disciplines", "Create", "Discipline", null, new { @class = "btn btn-light mb-3" })
+        <h2 class="text-white">Bienvenue, @adherentDetails.Prenom!</h2>
 
-@Html.ActionLink("Gestion des Adherents", "Index", "Adherents", null, new { @class = "btn btn-light mb-3" })
+        <div class="col-2">
 
-@Html.ActionLink("Liste de Messages", "Index", "Contacts", null, new { @class = "btn btn-light mb-3" })
+            @Html.ActionLink("Disciplines", "Create", "Disciplines", null, new { @class = "btn btn-light mb-3" })
 
-<button>creer sections</button>
-s
+            @Html.ActionLink("Gestion des Adherents", "Index", "Adherents", null, new { @class = "btn btn-light mb-3" })
 
+            @Html.ActionLink("Liste de Messages", "Index", "Contacts", null, new { @class = "btn btn-light mb-3" })
+
+            @Html.ActionLink("Sections", "Create", "Sections", null, new { @class = "btn btn-light mb-3" })
+
+        </div>
+    }
+    else
+    {
+        <p class="text-white">Les détails de l'adhérent ne sont pas disponibles.</p>
+    }
+
+</section>

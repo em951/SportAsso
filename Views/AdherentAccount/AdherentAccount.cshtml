@@ -1,37 +1,35 @@
 ﻿@model SportAssovv.Models.Adherent
 @{
     ViewBag.Title = "AdherentAccount";
+    // Vérifiez que les détails de l'adhérent sont dans la session
+    var adherentDetails = Session["AdherentDetails"] as SportAssovv.Models.Adherent;
 }
 
-<h2>Ton compte</h2>
+@if (adherentDetails != null)
+{
+    <h2>Bienvenue, @adherentDetails.Prenom!</h2>
+    <div>
+        <dl class="dl-horizontal font-weight-normal">
+            <dt>Nom : @adherentDetails.Nom</dt>
+            <dt>Prenom : @adherentDetails.Prenom</dt>
+            <dt>Email : @adherentDetails.Email</dt>
+            <dt>Adresse :  @adherentDetails.Adresse</dt>
+            <dt>Telephone : @adherentDetails.Telephone</dt>
+            <dt>Date de Naissance: @adherentDetails.DateNaissance</dt>
+            <dt>Mot de Passe : @adherentDetails.MotDePasse </dt>
+            <dt>Disciplines : @adherentDetails.Disciplines</dt>
+            <dt>Dossier Inscription : @adherentDetails.DossierInscription</dt>
+        </dl>
+    </div>
 
-<dl class="dl-horizontal">
-
-    <dt>
-        @Html.DisplayNameFor(model => model.Prenom)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.Prenom)
-    </dd>
-
-</dl>
-
-
-<div>
-    <p>Nom: </p>
-    <p>Prenom: /p>
-    <p>Email: /p>
-    <p>Telephone: </p>
-    <p>Adresse: </p>
-    <p>Date de Naissance: </p>
-    <p>Mot de Passe: </p>
-    <p>Role: </p>
-</div>
-
-<div>
-    <a href="@Url.Action("CreateMembre", "DossierInscriptions")" class="btn btn-light mb-3">Remplir Dossier</a>
-    <a href="@Url.Action("EditMembre", "DossierInscriptions")" class="btn btn-light mb-3">Editer Dossier</a>
-</div>
-
+    <div>
+        <a href="@Url.Action("EditMembre", "Adherents")" class="btn btn-light mb-3">Editer Inscription</a>
+        <a href="@Url.Action("CreateMembre", "DossierInscriptions")" class="btn btn-light mb-3">Remplir Dossier</a>
+        <a href="@Url.Action("EditMembre", "DossierInscriptions")" class="btn btn-light mb-3">Editer Dossier</a>
+    </div>
+}
+else
+{
+    <p>Les détails de l'adhérent ne sont pas disponibles.</p>
+}
 
