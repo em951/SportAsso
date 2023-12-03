@@ -22,7 +22,6 @@ namespace SportAssovv.Models
         public DbSet<DossierInscription> DossiersInscription { get; set; }
         public DbSet<Paiement> Paiements { get; set; }
         public DbSet<Section> Sections { get; set; }
-
         public DbSet<Contact> Contacts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

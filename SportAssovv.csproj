@@ -186,35 +186,20 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202311261207512_InitialCreate.cs" />
-    <Compile Include="Migrations\202311261207512_InitialCreate.designer.cs">
-      <DependentUpon>202311261207512_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202312031345541_InitialCreate.cs" />
+    <Compile Include="Migrations\202312031345541_InitialCreate.designer.cs">
+      <DependentUpon>202312031345541_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202311301634339_AjoutDonneesAdherent1.cs" />
-    <Compile Include="Migrations\202311301634339_AjoutDonneesAdherent1.designer.cs">
-      <DependentUpon>202311301634339_AjoutDonneesAdherent1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312021702573_AdherentDossierLiaison.cs" />
-    <Compile Include="Migrations\202312021702573_AdherentDossierLiaison.designer.cs">
-      <DependentUpon>202312021702573_AdherentDossierLiaison.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312031238000_ChangementModels.cs" />
-    <Compile Include="Migrations\202312031238000_ChangementModels.Designer.cs">
-      <DependentUpon>202312031238000_ChangementModels.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312031243360_CreateContactTable.cs" />
-    <Compile Include="Migrations\202312031243360_CreateContactTable.Designer.cs">
-      <DependentUpon>202312031243360_CreateContactTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\AjoutDonneesAdherent.cs" />
-    <Compile Include="Migrations\AjoutDonneesAdherent.designer.cs">
-      <DependentUpon>AjoutDonneesAdherent.cs</DependentUpon>
+    <Compile Include="Migrations\202312031421510_ChangementPaiement.cs" />
+    <Compile Include="Migrations\202312031421510_ChangementPaiement.designer.cs">
+      <DependentUpon>202312031421510_ChangementPaiement.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Adherent.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Creneaux.cs" />
+    <Compile Include="Models\DetailsPaiement.cs" />
     <Compile Include="Models\Discipline.cs" />
     <Compile Include="Models\DisciplineAdherent.cs" />
     <Compile Include="Models\DisciplineSection.cs" />
@@ -271,7 +256,6 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Moncompte.cshtml" />
-    <Content Include="Web.config" />
     <Content Include="Views\Adherent\Register.cshtml" />
     <Content Include="Views\Adherent\ResetMotPasse.cshtml" />
     <Content Include="Views\AdherentAccount\AdherentAccount.cshtml" />
@@ -282,21 +266,7 @@
     <Content Include="Views\Contacts\Index.cshtml" />
     <Content Include="Views\AdherentAccount\AdminAccount.cshtml" />
     <Content Include="Views\Home\LoginAdmin.cshtml" />
-    <Content Include="Views\Discipline\Create.cshtml" />
-    <Content Include="Views\Discipline\Delete.cshtml" />
-    <Content Include="Views\Discipline\Details.cshtml" />
-    <Content Include="Views\Discipline\Edit.cshtml" />
-    <Content Include="Views\Discipline\Index.cshtml" />
-    <Content Include="Views\DossierInscriptions\Create.cshtml" />
-    <Content Include="Views\DossierInscriptions\Delete.cshtml" />
-    <Content Include="Views\DossierInscriptions\Details.cshtml" />
-    <Content Include="Views\DossierInscriptions\Edit.cshtml" />
-    <Content Include="Views\DossierInscriptions\Index.cshtml" />
-    <Content Include="Views\Adherent\Create.cshtml" />
-    <Content Include="Views\Adherent\Delete.cshtml" />
-    <Content Include="Views\Adherent\Index.cshtml" />
-    <Content Include="Views\Adherent\Edit.cshtml" />
-    <Content Include="Views\Home\Disciplines.cshtml" />
+    <Content Include="Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -306,7 +276,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Section\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -336,23 +305,11 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202311261207512_InitialCreate.resx">
-      <DependentUpon>202311261207512_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202312031345541_InitialCreate.resx">
+      <DependentUpon>202312031345541_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202311301634339_AjoutDonneesAdherent1.resx">
-      <DependentUpon>202311301634339_AjoutDonneesAdherent1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312021702573_AdherentDossierLiaison.resx">
-      <DependentUpon>202312021702573_AdherentDossierLiaison.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312031238000_ChangementModels.resx">
-      <DependentUpon>202312031238000_ChangementModels.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312031243360_CreateContactTable.resx">
-      <DependentUpon>202312031243360_CreateContactTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\AjoutDonneesAdherent.resx">
-      <DependentUpon>AjoutDonneesAdherent.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202312031421510_ChangementPaiement.resx">
+      <DependentUpon>202312031421510_ChangementPaiement.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

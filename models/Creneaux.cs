@@ -26,8 +26,6 @@ namespace SportAssovv.Models
         [ForeignKey("SectionId")]
         public Section Section { get; set; }
 
-        public ICollection<Section> Sections { get; set; }
-
     }
 
 }

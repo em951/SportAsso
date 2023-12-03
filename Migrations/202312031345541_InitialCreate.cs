@@ -17,8 +17,9 @@
                         Adresse = c.String(nullable: false),
                         Email = c.String(nullable: false, maxLength: 64),
                         Telephone = c.String(nullable: false, maxLength: 20),
-                        DateNaissance = c.DateTime(nullable: false),
+                        DateNaissance = c.DateTime(),
                         MotDePasse = c.String(nullable: false, maxLength: 64),
+                        Role = c.String(maxLength: 64),
                     })
                 .PrimaryKey(t => t.AdherentId);
             
@@ -47,6 +48,7 @@
                     {
                         DisciplineId = c.Int(nullable: false, identity: true),
                         NomDiscipline = c.String(nullable: false, maxLength: 64),
+                        PlacesDisponibles = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.DisciplineId);
             
@@ -56,26 +58,12 @@
                     {
                         DisciplineId = c.Int(nullable: false),
                         SectionId = c.Int(nullable: false),
+                        DisciplineSectionId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => new { t.DisciplineId, t.SectionId })
-                .ForeignKey("dbo.Sections", t => t.SectionId, cascadeDelete: true)
                 .ForeignKey("dbo.Disciplines", t => t.DisciplineId, cascadeDelete: true)
-                .Index(t => t.DisciplineId)
-                .Index(t => t.SectionId);
-            
-            CreateTable(
-                "dbo.Creneaux",
-                c => new
-                    {
-                        CreneauHoraireId = c.Int(nullable: false, identity: true),
-                        Jour = c.DateTime(nullable: false),
-                        HeureDebut = c.Time(nullable: false, precision: 7),
-                        HeureFin = c.Time(nullable: false, precision: 7),
-                        PlacesDisponibles = c.Int(nullable: false),
-                        SectionId = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.CreneauHoraireId)
                 .ForeignKey("dbo.Sections", t => t.SectionId, cascadeDelete: true)
+                .Index(t => t.DisciplineId)
                 .Index(t => t.SectionId);
             
             CreateTable(
@@ -88,15 +76,31 @@
                 .PrimaryKey(t => t.SectionId);
             
             CreateTable(
+                "dbo.Creneaux",
+                c => new
+                    {
+                        CreneauHoraireId = c.Int(nullable: false, identity: true),
+                        JourHeureDebut = c.DateTime(nullable: false),
+                        HeureFin = c.Time(nullable: false, precision: 7),
+                        SectionId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.CreneauHoraireId)
+                .ForeignKey("dbo.Sections", t => t.SectionId, cascadeDelete: true)
+                .Index(t => t.SectionId);
+            
+            CreateTable(
                 "dbo.DossierInscriptions",
                 c => new
                     {
-                        DossierId = c.Int(nullable: false, identity: true),
-                        StatutInscription = c.String(nullable: false, maxLength: 64),
                         AdherentId = c.Int(nullable: false),
+                        DossierId = c.Int(nullable: false),
+                        StatutInscription = c.String(nullable: false, maxLength: 64),
+                        Certificat_medical = c.Boolean(nullable: false),
+                        Assurance = c.Boolean(nullable: false),
+                        Dossier_complet = c.Boolean(nullable: false),
                     })
-                .PrimaryKey(t => t.DossierId)
-                .ForeignKey("dbo.Adherents", t => t.AdherentId, cascadeDelete: true)
+                .PrimaryKey(t => t.AdherentId)
+                .ForeignKey("dbo.Adherents", t => t.AdherentId)
                 .Index(t => t.AdherentId);
             
             CreateTable(
@@ -107,31 +111,42 @@
                         MontantPaye = c.Int(nullable: false),
                         DatePaiement = c.DateTime(nullable: false),
                         StatutPaiement = c.String(nullable: false, maxLength: 64),
-                        DossierInscriptionDossierId = c.Int(nullable: false),
+                        AdherentId = c.Int(nullable: false),
+                        DossierId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.PaiementId)
-                .ForeignKey("dbo.DossierInscriptions", t => t.DossierInscriptionDossierId, cascadeDelete: true)
-                .Index(t => t.DossierInscriptionDossierId);
-
-
+                .ForeignKey("dbo.Adherents", t => t.AdherentId, cascadeDelete: true)
+                .ForeignKey("dbo.DossierInscriptions", t => t.DossierId, cascadeDelete: true)
+                .Index(t => t.AdherentId)
+                .Index(t => t.DossierId);
+            
+            CreateTable(
+                "dbo.Contacts",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        Nome = c.String(nullable: false, maxLength: 100),
+                        Email = c.String(nullable: false, maxLength: 100),
+                        Mensagem = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.ID);
+            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Paiements", "DossierInscriptionDossierId", "dbo.DossierInscriptions");
             DropForeignKey("dbo.DossierInscriptions", "AdherentId", "dbo.Adherents");
+            DropForeignKey("dbo.Paiements", "DossierId", "dbo.DossierInscriptions");
+            DropForeignKey("dbo.Paiements", "AdherentId", "dbo.Adherents");
             DropForeignKey("dbo.DisciplineAdherents", "Adherent_AdherentId1", "dbo.Adherents");
             DropForeignKey("dbo.DisciplineAdherents", "Adherent_AdherentId", "dbo.Adherents");
-            DropForeignKey("dbo.DisciplineSections", "DisciplineId", "dbo.Disciplines");
             DropForeignKey("dbo.DisciplineSections", "SectionId", "dbo.Sections");
             DropForeignKey("dbo.Creneaux", "SectionId", "dbo.Sections");
-            DropForeignKey("dbo.CreneauxDisciplineSections", new[] { "DisciplineSection_DisciplineId", "DisciplineSection_SectionId" }, "dbo.DisciplineSections");
-            DropForeignKey("dbo.CreneauxDisciplineSections", "Creneaux_CreneauHoraireId", "dbo.Creneaux");
+            DropForeignKey("dbo.DisciplineSections", "DisciplineId", "dbo.Disciplines");
             DropForeignKey("dbo.DisciplineAdherents", "DisciplineId", "dbo.Disciplines");
             DropForeignKey("dbo.DisciplineAdherents", "AdherentId", "dbo.Adherents");
-            DropIndex("dbo.CreneauxDisciplineSections", new[] { "DisciplineSection_DisciplineId", "DisciplineSection_SectionId" });
-            DropIndex("dbo.CreneauxDisciplineSections", new[] { "Creneaux_CreneauHoraireId" });
-            DropIndex("dbo.Paiements", new[] { "DossierInscriptionDossierId" });
+            DropIndex("dbo.Paiements", new[] { "DossierId" });
+            DropIndex("dbo.Paiements", new[] { "AdherentId" });
             DropIndex("dbo.DossierInscriptions", new[] { "AdherentId" });
             DropIndex("dbo.Creneaux", new[] { "SectionId" });
             DropIndex("dbo.DisciplineSections", new[] { "SectionId" });
@@ -140,26 +155,15 @@
             DropIndex("dbo.DisciplineAdherents", new[] { "Adherent_AdherentId" });
             DropIndex("dbo.DisciplineAdherents", new[] { "AdherentId" });
             DropIndex("dbo.DisciplineAdherents", new[] { "DisciplineId" });
-            DropTable("dbo.CreneauxDisciplineSections");
+            DropTable("dbo.Contacts");
             DropTable("dbo.Paiements");
             DropTable("dbo.DossierInscriptions");
-            DropTable("dbo.Sections");
             DropTable("dbo.Creneaux");
+            DropTable("dbo.Sections");
             DropTable("dbo.DisciplineSections");
             DropTable("dbo.Disciplines");
             DropTable("dbo.DisciplineAdherents");
             DropTable("dbo.Adherents");
-
-            // Supprime les clés étrangères associées à CreneauxDisciplineSections
-            DropForeignKey("dbo.CreneauxDisciplineSections", "Creneaux_CreneauHoraireId", "dbo.Creneaux");
-            DropForeignKey("dbo.CreneauxDisciplineSections", new[] { "DisciplineSection_DisciplineId", "DisciplineSection_SectionId" }, "dbo.DisciplineSections");
-
-            // Supprime les index associés à CreneauxDisciplineSections
-            DropIndex("dbo.CreneauxDisciplineSections", new[] { "Creneaux_CreneauHoraireId" });
-            DropIndex("dbo.CreneauxDisciplineSections", new[] { "DisciplineSection_DisciplineId", "DisciplineSection_SectionId" });
-
-            // Supprime la table CreneauxDisciplineSections
-            DropTable("dbo.CreneauxDisciplineSections");
         }
     }
 }

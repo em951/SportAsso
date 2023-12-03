@@ -7,13 +7,13 @@ namespace SportAssovv.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class ChangementModels : IMigrationMetadata
+    public sealed partial class ChangementPaiement : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangementModels));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangementPaiement));
         
         string IMigrationMetadata.Id
         {
-            get { return "202312031238000_ChangementModels"; }
+            get { return "202312031421510_ChangementPaiement"; }
         }
         
         string IMigrationMetadata.Source

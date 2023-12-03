@@ -7,13 +7,13 @@ namespace SportAssovv.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class CreateContactTable : IMigrationMetadata
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateContactTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "202312031243360_CreateContactTable"; }
+            get { return "202312031345541_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source
