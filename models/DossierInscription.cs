@@ -13,6 +13,7 @@ namespace SportAssovv.Models
         [ForeignKey("Adherent")]
         public int AdherentId { get; set; }
 
+
         public int DossierId { get; set; }
 
         [Required]

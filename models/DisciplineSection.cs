@@ -11,19 +11,13 @@ namespace SportAssovv.Models
     public class DisciplineSection
     {
         [Key]
+        public int DisciplineSectionId { get; set; }
+
         public int DisciplineId { get; set; }
-
-        [Key]
-        public int SectionId { get; set; }
-
-        // Clés étrangères
-        [ForeignKey("DisciplineId")]
         public Discipline Discipline { get; set; }
 
-        [ForeignKey("SectionId")]
+        public int SectionId { get; set; }
         public Section Section { get; set; }
-
-        public ICollection<Creneaux> Creneaux { get; set; }
     }
 
 }

@@ -183,7 +183,6 @@
     <Compile Include="Controllers\DisciplineController.cs" />
     <Compile Include="Controllers\DossierInscriptionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\SectionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -199,9 +198,13 @@
     <Compile Include="Migrations\202312021702573_AdherentDossierLiaison.designer.cs">
       <DependentUpon>202312021702573_AdherentDossierLiaison.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202312021708546_CreateContact.cs" />
-    <Compile Include="Migrations\202312021708546_CreateContact.designer.cs">
-      <DependentUpon>202312021708546_CreateContact.cs</DependentUpon>
+    <Compile Include="Migrations\202312031238000_ChangementModels.cs" />
+    <Compile Include="Migrations\202312031238000_ChangementModels.Designer.cs">
+      <DependentUpon>202312031238000_ChangementModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312031243360_CreateContactTable.cs" />
+    <Compile Include="Migrations\202312031243360_CreateContactTable.Designer.cs">
+      <DependentUpon>202312031243360_CreateContactTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AjoutDonneesAdherent.cs" />
     <Compile Include="Migrations\AjoutDonneesAdherent.designer.cs">
@@ -268,7 +271,6 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Moncompte.cshtml" />
-    <Content Include="Views\Adherent\ListeAdherents.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Views\Adherent\Register.cshtml" />
     <Content Include="Views\Adherent\ResetMotPasse.cshtml" />
@@ -343,8 +345,11 @@
     <EmbeddedResource Include="Migrations\202312021702573_AdherentDossierLiaison.resx">
       <DependentUpon>202312021702573_AdherentDossierLiaison.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312021708546_CreateContact.resx">
-      <DependentUpon>202312021708546_CreateContact.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202312031238000_ChangementModels.resx">
+      <DependentUpon>202312031238000_ChangementModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312031243360_CreateContactTable.resx">
+      <DependentUpon>202312031243360_CreateContactTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\AjoutDonneesAdherent.resx">
       <DependentUpon>AjoutDonneesAdherent.cs</DependentUpon>

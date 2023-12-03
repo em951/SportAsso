@@ -119,6 +119,7 @@ namespace SportAssovv.Controllers
         {
             if (ModelState.IsValid)
             {
+                // adherent.Role = "membre"; 
                 db.Adherents.Add(adherent);
                 db.SaveChanges();
                 return View("~/Views/Home/Moncompte.cshtml");

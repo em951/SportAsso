@@ -14,7 +14,7 @@ namespace SportAssovv.Models
         [Required]
         [MaxLength(64)]
         public string NomSection { get; set; }
-        
+
         // Propriétés de navigation
         public ICollection<Creneaux> Creneaux { get; set; }
         public ICollection<DisciplineSection> Disciplines { get; set; }

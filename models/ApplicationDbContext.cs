@@ -38,6 +38,12 @@ namespace SportAssovv.Models
                 .HasOptional(a => a.DossierInscription) //adherent avec dossier optionel
                 .WithRequired(di => di.Adherent); //dossier exige un adherent
 
+            // Relation 1..* entre DossierInscription e Paiement
+            modelBuilder.Entity<DossierInscription>()
+                   .HasMany(d => d.Paiements)
+                   .WithRequired(p => p.DossierInscription)
+                   .HasForeignKey(p => p.DossierId);
+
         }
 
     }

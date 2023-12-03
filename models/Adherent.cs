@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Data;
+using System.Data.SqlClient;
+
 
 namespace SportAssovv.Models
 {
@@ -35,15 +38,16 @@ namespace SportAssovv.Models
         [MaxLength(20)]
         public string Telephone { get; set; }
 
-        [Required]
-        public DateTime DateNaissance { get; set; }
+
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true, NullDisplayText = "NULL")]
+        public Nullable<System.DateTime> DateNaissance { get; set; }
 
         [Required]
         [MaxLength(64)]
         public string MotDePasse { get; set; }
 
-        [Required]
-        
+        [MaxLength(64)]
         public string Role { get; set; }
 
         //1..1 adherent dossier

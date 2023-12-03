@@ -7,13 +7,13 @@ namespace SportAssovv.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class CreateContact : IMigrationMetadata
+    public sealed partial class ChangementModels : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateContact));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangementModels));
         
         string IMigrationMetadata.Id
         {
-            get { return "202312021708546_CreateContact"; }
+            get { return "202312031238000_ChangementModels"; }
         }
         
         string IMigrationMetadata.Source

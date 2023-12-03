@@ -22,11 +22,14 @@ namespace SportAssovv.Models
         [MaxLength(64)]
         public string StatutPaiement { get; set; }
 
-        [Required]
-        public int DossierInscriptionDossierId { get; set; }
+        public int AdherentId { get; set; }
 
-        // Clé étrangère
-        [ForeignKey("DossierInscriptionDossierId")]
+        [ForeignKey("AdherentId")]
+        public Adherent Adherent { get; set; }
+
+        public int DossierId { get; set; }
+
+        [ForeignKey("DossierId")]
         public DossierInscription DossierInscription { get; set; }
     }
 

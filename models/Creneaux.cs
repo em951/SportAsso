@@ -14,16 +14,10 @@ namespace SportAssovv.Models
         public int CreneauHoraireId { get; set; }
 
         [Required]
-        public DateTime Jour { get; set; }
-
-        [Required]
-        public TimeSpan HeureDebut { get; set; }
+        public DateTime JourHeureDebut { get; set; }
 
         [Required]
         public TimeSpan HeureFin { get; set; }
-
-        [Required]
-        public int PlacesDisponibles { get; set; }
 
         [Required]
         public int SectionId { get; set; }
@@ -32,7 +26,7 @@ namespace SportAssovv.Models
         [ForeignKey("SectionId")]
         public Section Section { get; set; }
 
-        public ICollection<DisciplineSection> DisciplineSections { get; set; }
+        public ICollection<Section> Sections { get; set; }
 
     }
 
