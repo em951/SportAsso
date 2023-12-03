@@ -5,7 +5,18 @@
 
 <h2>Ton compte</h2>
 
-<h2>Bienvenue, @Html.DisplayFor(model => model.Prenom)</h2>
+<dl class="dl-horizontal">
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Prenom)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Prenom)
+    </dd>
+
+</dl>
+
 
 <div>
     <p>Nom: </p>
@@ -18,10 +29,9 @@
     <p>Role: </p>
 </div>
 
-<h3>Dossier</h3>
 <div>
-
-    <button class="btn btn-light">Remplir Dossier</button>
-    <button class="btn btn-light">Editer Dossier</button>
-
+    <a href="@Url.Action("CreateMembre", "DossierInscriptions")" class="btn btn-light mb-3">Remplir Dossier</a>
+    <a href="@Url.Action("EditMembre", "DossierInscriptions")" class="btn btn-light mb-3">Editer Dossier</a>
 </div>
+
+

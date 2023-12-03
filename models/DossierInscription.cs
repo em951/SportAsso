@@ -22,7 +22,7 @@ namespace SportAssovv.Models
 
         public Adherent Adherent { get; set; }
 
-
+        [InverseProperty("DossierInscription")]
         public ICollection<Paiement> Paiements { get; set; }
 
         public bool Certificat_medical { get; set; }

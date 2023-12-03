@@ -40,7 +40,7 @@ namespace SportAssovv.Controllers
         // GET: Adherents/Create
         public ActionResult Create()
         {
-            ViewBag.AdherentId = new SelectList(db.DossiersInscription, "AdherentId", "StatutInscription");
+            ViewBag.AdherentId = new SelectList(db.DossierInscription, "AdherentId", "StatutInscription");
             return View();
         }
 
@@ -58,7 +58,7 @@ namespace SportAssovv.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AdherentId = new SelectList(db.DossiersInscription, "AdherentId", "StatutInscription", adherent.AdherentId);
+            ViewBag.AdherentId = new SelectList(db.DossierInscription, "AdherentId", "StatutInscription", adherent.AdherentId);
             return View(adherent);
         }
 
@@ -74,7 +74,7 @@ namespace SportAssovv.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.AdherentId = new SelectList(db.DossiersInscription, "AdherentId", "StatutInscription", adherent.AdherentId);
+            ViewBag.AdherentId = new SelectList(db.DossierInscription, "AdherentId", "StatutInscription", adherent.AdherentId);
             return View(adherent);
         }
 
@@ -91,7 +91,7 @@ namespace SportAssovv.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AdherentId = new SelectList(db.DossiersInscription, "AdherentId", "StatutInscription", adherent.AdherentId);
+            ViewBag.AdherentId = new SelectList(db.DossierInscription, "AdherentId", "StatutInscription", adherent.AdherentId);
             return View(adherent);
         }
 
@@ -175,7 +175,7 @@ namespace SportAssovv.Controllers
         // GET: Adherent/Register
         public ActionResult Register()
         {
-            ViewBag.AdherentId = new SelectList(db.DossiersInscription, "AdherentId", "StatutInscription");
+            ViewBag.AdherentId = new SelectList(db.DossierInscription, "AdherentId", "StatutInscription");
             return View();
         }
 
@@ -192,7 +192,7 @@ namespace SportAssovv.Controllers
                 return View("~/Views/Home/Moncompte.cshtml");
             }
 
-            ViewBag.AdherentId = new SelectList(db.DossiersInscription, "AdherentId", "StatutInscription", adherent.AdherentId);
+            ViewBag.AdherentId = new SelectList(db.DossierInscription, "AdherentId", "StatutInscription", adherent.AdherentId);
             return View(adherent);
         }
 

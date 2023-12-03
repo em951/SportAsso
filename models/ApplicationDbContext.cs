@@ -19,7 +19,7 @@ namespace SportAssovv.Models
         public DbSet<Discipline> Disciplines { get; set; }
         public DbSet<DisciplineAdherent> DisciplineAdherents { get; set; }
         public DbSet<DisciplineSection> DisciplineSections { get; set; }
-        public DbSet<DossierInscription> DossiersInscription { get; set; }
+        public DbSet<DossierInscription> DossierInscription { get; set; }
         public DbSet<Paiement> Paiements { get; set; }
         public DbSet<Section> Sections { get; set; }
         public DbSet<Contact> Contacts { get; set; }
@@ -38,9 +38,9 @@ namespace SportAssovv.Models
                 .WithRequired(di => di.Adherent); //dossier exige un adherent
 
             // Relation 1..* entre DossierInscription e Paiement
-            modelBuilder.Entity<DossierInscription>()
-                   .HasMany(d => d.Paiements)
-                   .WithRequired(p => p.DossierInscription)
+            modelBuilder.Entity<Paiement>()
+                   .HasRequired(p => p.DossierInscription)
+                   .WithMany(d => d.Paiements)
                    .HasForeignKey(p => p.DossierId);
 
         }

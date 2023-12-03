@@ -41,7 +41,7 @@ namespace SportAssovv.Controllers
         {
             ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom");
             ViewBag.PaiementId = new SelectList(db.DetailsPaiements, "PaiementId", "NumeroCarte");
-            ViewBag.DossierId = new SelectList(db.DossierInscriptions, "AdherentId", "StatutInscription");
+            ViewBag.DossierId = new SelectList(db.DossierInscription, "AdherentId", "StatutInscription");
             return View();
         }
 
@@ -61,7 +61,7 @@ namespace SportAssovv.Controllers
 
             ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", paiement.AdherentId);
             ViewBag.PaiementId = new SelectList(db.DetailsPaiements, "PaiementId", "NumeroCarte", paiement.PaiementId);
-            ViewBag.DossierId = new SelectList(db.DossierInscriptions, "AdherentId", "StatutInscription", paiement.DossierId);
+            ViewBag.DossierId = new SelectList(db.DossierInscription, "AdherentId", "StatutInscription", paiement.DossierId);
             return View(paiement);
         }
 
@@ -79,7 +79,7 @@ namespace SportAssovv.Controllers
             }
             ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", paiement.AdherentId);
             ViewBag.PaiementId = new SelectList(db.DetailsPaiements, "PaiementId", "NumeroCarte", paiement.PaiementId);
-            ViewBag.DossierId = new SelectList(db.DossierInscriptions, "AdherentId", "StatutInscription", paiement.DossierId);
+            ViewBag.DossierId = new SelectList(db.DossierInscription, "AdherentId", "StatutInscription", paiement.DossierId);
             return View(paiement);
         }
 
@@ -98,7 +98,7 @@ namespace SportAssovv.Controllers
             }
             ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", paiement.AdherentId);
             ViewBag.PaiementId = new SelectList(db.DetailsPaiements, "PaiementId", "NumeroCarte", paiement.PaiementId);
-            ViewBag.DossierId = new SelectList(db.DossierInscriptions, "AdherentId", "StatutInscription", paiement.DossierId);
+            ViewBag.DossierId = new SelectList(db.DossierInscription, "AdherentId", "StatutInscription", paiement.DossierId);
             return View(paiement);
         }
 

@@ -198,6 +198,14 @@
     <Compile Include="Migrations\202312031421510_ChangementPaiement.designer.cs">
       <DependentUpon>202312031421510_ChangementPaiement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202312031758119_AjustementPaiement.cs" />
+    <Compile Include="Migrations\202312031758119_AjustementPaiement.designer.cs">
+      <DependentUpon>202312031758119_AjustementPaiement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312031805351_AjustementPaiement2.cs" />
+    <Compile Include="Migrations\202312031805351_AjustementPaiement2.designer.cs">
+      <DependentUpon>202312031805351_AjustementPaiement2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Adherent.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -281,11 +289,6 @@
     <Content Include="Views\Disciplines\Details.cshtml" />
     <Content Include="Views\Disciplines\Edit.cshtml" />
     <Content Include="Views\Disciplines\Index.cshtml" />
-    <Content Include="Views\Paiements\Create.cshtml" />
-    <Content Include="Views\Paiements\Delete.cshtml" />
-    <Content Include="Views\Paiements\Details.cshtml" />
-    <Content Include="Views\Paiements\Edit.cshtml" />
-    <Content Include="Views\Paiements\Index.cshtml" />
     <Content Include="Views\DetailsPaiements\Create.cshtml" />
     <Content Include="Views\DetailsPaiements\Delete.cshtml" />
     <Content Include="Views\DetailsPaiements\Details.cshtml" />
@@ -306,6 +309,13 @@
     <Content Include="Views\Sections\Details.cshtml" />
     <Content Include="Views\Sections\Edit.cshtml" />
     <Content Include="Views\Sections\Index.cshtml" />
+    <Content Include="Views\DossierInscriptions\CreateMembre.cshtml" />
+    <Content Include="Views\DossierInscriptions\EditMembre.cshtml" />
+    <Content Include="Views\Paiements\Create.cshtml" />
+    <Content Include="Views\Paiements\Delete.cshtml" />
+    <Content Include="Views\Paiements\Details.cshtml" />
+    <Content Include="Views\Paiements\Edit.cshtml" />
+    <Content Include="Views\Paiements\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -349,6 +359,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202312031421510_ChangementPaiement.resx">
       <DependentUpon>202312031421510_ChangementPaiement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312031758119_AjustementPaiement.resx">
+      <DependentUpon>202312031758119_AjustementPaiement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312031805351_AjustementPaiement2.resx">
+      <DependentUpon>202312031805351_AjustementPaiement2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
