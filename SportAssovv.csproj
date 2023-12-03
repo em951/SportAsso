@@ -234,6 +234,7 @@
     <Compile Include="Controllers\CreneauxController.cs" />
     <Compile Include="Controllers\DetailsPaiementsController.cs" />
     <Compile Include="Controllers\DisciplinesController.cs" />
+    <Compile Include="Controllers\DisciplineSectionsController.cs" />
     <Compile Include="Controllers\DossierInscriptionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PaiementsController.cs" />
@@ -371,6 +372,11 @@
     <Content Include="Views\Paiements\Index.cshtml" />
     <Content Include="Views\Adherents\EditMembre.cshtml" />
     <Content Include="Views\Home\Disciplines.cshtml" />
+    <Content Include="Views\DisciplineSections\Create.cshtml" />
+    <Content Include="Views\DisciplineSections\Delete.cshtml" />
+    <Content Include="Views\DisciplineSections\Details.cshtml" />
+    <Content Include="Views\DisciplineSections\Edit.cshtml" />
+    <Content Include="Views\DisciplineSections\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
