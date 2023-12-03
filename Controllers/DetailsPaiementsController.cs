@@ -10,112 +10,112 @@ using SportAssovv.Models;
 
 namespace SportAssovv.Controllers
 {
-    public class DossierInscriptionsController : Controller
+    public class DetailsPaiementsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: DossierInscriptions
+        // GET: DetailsPaiements
         public ActionResult Index()
         {
-            var dossiersInscription = db.DossiersInscription.Include(d => d.Adherent);
-            return View(dossiersInscription.ToList());
+            var detailsPaiements = db.DetailsPaiements.Include(d => d.Paiement);
+            return View(detailsPaiements.ToList());
         }
 
-        // GET: DossierInscriptions/Details/5
+        // GET: DetailsPaiements/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DossierInscription dossierInscription = db.DossiersInscription.Find(id);
-            if (dossierInscription == null)
+            DetailsPaiement detailsPaiement = db.DetailsPaiements.Find(id);
+            if (detailsPaiement == null)
             {
                 return HttpNotFound();
             }
-            return View(dossierInscription);
+            return View(detailsPaiement);
         }
 
-        // GET: DossierInscriptions/Create
+        // GET: DetailsPaiements/Create
         public ActionResult Create()
         {
-            ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom");
+            ViewBag.PaiementId = new SelectList(db.Paiements, "PaiementId", "StatutPaiement");
             return View();
         }
 
-        // POST: DossierInscriptions/Create
+        // POST: DetailsPaiements/Create
         // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AdherentId,DossierId,StatutInscription,Certificat_medical,Assurance,Dossier_complet,Certificat_medical_data,Certificat_medical_contentType,Assurance_data,Assurance_contentType")] DossierInscription dossierInscription)
+        public ActionResult Create([Bind(Include = "PaiementId,NumeroCarte,Valeur,NomTitulaire,DateValidite")] DetailsPaiement detailsPaiement)
         {
             if (ModelState.IsValid)
             {
-                db.DossiersInscription.Add(dossierInscription);
+                db.DetailsPaiements.Add(detailsPaiement);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", dossierInscription.AdherentId);
-            return View(dossierInscription);
+            ViewBag.PaiementId = new SelectList(db.Paiements, "PaiementId", "StatutPaiement", detailsPaiement.PaiementId);
+            return View(detailsPaiement);
         }
 
-        // GET: DossierInscriptions/Edit/5
+        // GET: DetailsPaiements/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DossierInscription dossierInscription = db.DossiersInscription.Find(id);
-            if (dossierInscription == null)
+            DetailsPaiement detailsPaiement = db.DetailsPaiements.Find(id);
+            if (detailsPaiement == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", dossierInscription.AdherentId);
-            return View(dossierInscription);
+            ViewBag.PaiementId = new SelectList(db.Paiements, "PaiementId", "StatutPaiement", detailsPaiement.PaiementId);
+            return View(detailsPaiement);
         }
 
-        // POST: DossierInscriptions/Edit/5
+        // POST: DetailsPaiements/Edit/5
         // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AdherentId,DossierId,StatutInscription,Certificat_medical,Assurance,Dossier_complet,Certificat_medical_data,Certificat_medical_contentType,Assurance_data,Assurance_contentType")] DossierInscription dossierInscription)
+        public ActionResult Edit([Bind(Include = "PaiementId,NumeroCarte,Valeur,NomTitulaire,DateValidite")] DetailsPaiement detailsPaiement)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(dossierInscription).State = EntityState.Modified;
+                db.Entry(detailsPaiement).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", dossierInscription.AdherentId);
-            return View(dossierInscription);
+            ViewBag.PaiementId = new SelectList(db.Paiements, "PaiementId", "StatutPaiement", detailsPaiement.PaiementId);
+            return View(detailsPaiement);
         }
 
-        // GET: DossierInscriptions/Delete/5
+        // GET: DetailsPaiements/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DossierInscription dossierInscription = db.DossiersInscription.Find(id);
-            if (dossierInscription == null)
+            DetailsPaiement detailsPaiement = db.DetailsPaiements.Find(id);
+            if (detailsPaiement == null)
             {
                 return HttpNotFound();
             }
-            return View(dossierInscription);
+            return View(detailsPaiement);
         }
 
-        // POST: DossierInscriptions/Delete/5
+        // POST: DetailsPaiements/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DossierInscription dossierInscription = db.DossiersInscription.Find(id);
-            db.DossiersInscription.Remove(dossierInscription);
+            DetailsPaiement detailsPaiement = db.DetailsPaiements.Find(id);
+            db.DetailsPaiements.Remove(detailsPaiement);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

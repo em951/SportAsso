@@ -10,112 +10,107 @@ using SportAssovv.Models;
 
 namespace SportAssovv.Controllers
 {
-    public class DossierInscriptionsController : Controller
+    public class SectionsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: DossierInscriptions
+        // GET: Sections
         public ActionResult Index()
         {
-            var dossiersInscription = db.DossiersInscription.Include(d => d.Adherent);
-            return View(dossiersInscription.ToList());
+            return View(db.Sections.ToList());
         }
 
-        // GET: DossierInscriptions/Details/5
+        // GET: Sections/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DossierInscription dossierInscription = db.DossiersInscription.Find(id);
-            if (dossierInscription == null)
+            Section section = db.Sections.Find(id);
+            if (section == null)
             {
                 return HttpNotFound();
             }
-            return View(dossierInscription);
+            return View(section);
         }
 
-        // GET: DossierInscriptions/Create
+        // GET: Sections/Create
         public ActionResult Create()
         {
-            ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom");
             return View();
         }
 
-        // POST: DossierInscriptions/Create
+        // POST: Sections/Create
         // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AdherentId,DossierId,StatutInscription,Certificat_medical,Assurance,Dossier_complet,Certificat_medical_data,Certificat_medical_contentType,Assurance_data,Assurance_contentType")] DossierInscription dossierInscription)
+        public ActionResult Create([Bind(Include = "SectionId,NomSection")] Section section)
         {
             if (ModelState.IsValid)
             {
-                db.DossiersInscription.Add(dossierInscription);
+                db.Sections.Add(section);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", dossierInscription.AdherentId);
-            return View(dossierInscription);
+            return View(section);
         }
 
-        // GET: DossierInscriptions/Edit/5
+        // GET: Sections/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DossierInscription dossierInscription = db.DossiersInscription.Find(id);
-            if (dossierInscription == null)
+            Section section = db.Sections.Find(id);
+            if (section == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", dossierInscription.AdherentId);
-            return View(dossierInscription);
+            return View(section);
         }
 
-        // POST: DossierInscriptions/Edit/5
+        // POST: Sections/Edit/5
         // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AdherentId,DossierId,StatutInscription,Certificat_medical,Assurance,Dossier_complet,Certificat_medical_data,Certificat_medical_contentType,Assurance_data,Assurance_contentType")] DossierInscription dossierInscription)
+        public ActionResult Edit([Bind(Include = "SectionId,NomSection")] Section section)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(dossierInscription).State = EntityState.Modified;
+                db.Entry(section).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", dossierInscription.AdherentId);
-            return View(dossierInscription);
+            return View(section);
         }
 
-        // GET: DossierInscriptions/Delete/5
+        // GET: Sections/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DossierInscription dossierInscription = db.DossiersInscription.Find(id);
-            if (dossierInscription == null)
+            Section section = db.Sections.Find(id);
+            if (section == null)
             {
                 return HttpNotFound();
             }
-            return View(dossierInscription);
+            return View(section);
         }
 
-        // POST: DossierInscriptions/Delete/5
+        // POST: Sections/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DossierInscription dossierInscription = db.DossiersInscription.Find(id);
-            db.DossiersInscription.Remove(dossierInscription);
+            Section section = db.Sections.Find(id);
+            db.Sections.Remove(section);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -45,5 +45,6 @@ namespace SportAssovv.Models
 
         }
 
+        public System.Data.Entity.DbSet<SportAssovv.Models.DetailsPaiement> DetailsPaiements { get; set; }
     }
 }

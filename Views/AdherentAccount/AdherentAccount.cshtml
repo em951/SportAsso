@@ -1,27 +1,27 @@
-﻿
-@model SportAssovv.Models.Adherent
+﻿@model SportAssovv.Models.Adherent
 @{
     ViewBag.Title = "AdherentAccount";
 }
 
 <h2>Ton compte</h2>
 
-<h2>Bienvenue, @Model.Prenom!</h2>
+<h2>Bienvenue, @Html.DisplayFor(model => model.Prenom)</h2>
 
 <div>
-    <p>Nom: @Model.Nom</p>
-    <p>Prenom: @Model.Prenom</p>
-    <p>Email: @Model.Email</p>
-    <p>Telephone: @Model.Telephone</p>
-    <p>Adresse: @Model.Adresse</p>
-    <p>Date de Naissance: @Model.DateNaissance</p>
-    <p>Mot de Passe: @Model.MotDePasse</p>
-    <p>Role: @Model.Role</p>
+    <p>Nom: </p>
+    <p>Prenom: /p>
+    <p>Email: /p>
+    <p>Telephone: </p>
+    <p>Adresse: </p>
+    <p>Date de Naissance: </p>
+    <p>Mot de Passe: </p>
+    <p>Role: </p>
 </div>
 
 <h3>Dossier</h3>
 <div>
 
-    <p>Propriedade1: </p>
+    <button class="btn btn-light">Remplir Dossier</button>
+    <button class="btn btn-light">Editer Dossier</button>
 
 </div>

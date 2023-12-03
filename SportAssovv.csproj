@@ -178,11 +178,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdherentAccountController.cs" />
-    <Compile Include="Controllers\AdherentController.cs" />
+    <Compile Include="Controllers\AdherentsController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
-    <Compile Include="Controllers\DisciplineController.cs" />
+    <Compile Include="Controllers\CreneauxController.cs" />
+    <Compile Include="Controllers\DetailsPaiementsController.cs" />
+    <Compile Include="Controllers\DisciplinesController.cs" />
     <Compile Include="Controllers\DossierInscriptionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PaiementsController.cs" />
+    <Compile Include="Controllers\SectionsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -256,8 +260,6 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Moncompte.cshtml" />
-    <Content Include="Views\Adherent\Register.cshtml" />
-    <Content Include="Views\Adherent\ResetMotPasse.cshtml" />
     <Content Include="Views\AdherentAccount\AdherentAccount.cshtml" />
     <Content Include="Views\Contacts\Create.cshtml" />
     <Content Include="Views\Contacts\Delete.cshtml" />
@@ -267,6 +269,43 @@
     <Content Include="Views\AdherentAccount\AdminAccount.cshtml" />
     <Content Include="Views\Home\LoginAdmin.cshtml" />
     <Content Include="Web.config" />
+    <Content Include="Views\Adherents\Create.cshtml" />
+    <Content Include="Views\Adherents\Delete.cshtml" />
+    <Content Include="Views\Adherents\Details.cshtml" />
+    <Content Include="Views\Adherents\Edit.cshtml" />
+    <Content Include="Views\Adherents\Index.cshtml" />
+    <Content Include="Views\Adherents\ResetMotPasse.cshtml" />
+    <Content Include="Views\Adherents\Register.cshtml" />
+    <Content Include="Views\Disciplines\Create.cshtml" />
+    <Content Include="Views\Disciplines\Delete.cshtml" />
+    <Content Include="Views\Disciplines\Details.cshtml" />
+    <Content Include="Views\Disciplines\Edit.cshtml" />
+    <Content Include="Views\Disciplines\Index.cshtml" />
+    <Content Include="Views\Paiements\Create.cshtml" />
+    <Content Include="Views\Paiements\Delete.cshtml" />
+    <Content Include="Views\Paiements\Details.cshtml" />
+    <Content Include="Views\Paiements\Edit.cshtml" />
+    <Content Include="Views\Paiements\Index.cshtml" />
+    <Content Include="Views\DetailsPaiements\Create.cshtml" />
+    <Content Include="Views\DetailsPaiements\Delete.cshtml" />
+    <Content Include="Views\DetailsPaiements\Details.cshtml" />
+    <Content Include="Views\DetailsPaiements\Edit.cshtml" />
+    <Content Include="Views\DetailsPaiements\Index.cshtml" />
+    <Content Include="Views\Creneaux\Create.cshtml" />
+    <Content Include="Views\Creneaux\Delete.cshtml" />
+    <Content Include="Views\Creneaux\Details.cshtml" />
+    <Content Include="Views\Creneaux\Edit.cshtml" />
+    <Content Include="Views\Creneaux\Index.cshtml" />
+    <Content Include="Views\DossierInscriptions\Create.cshtml" />
+    <Content Include="Views\DossierInscriptions\Delete.cshtml" />
+    <Content Include="Views\DossierInscriptions\Details.cshtml" />
+    <Content Include="Views\DossierInscriptions\Edit.cshtml" />
+    <Content Include="Views\DossierInscriptions\Index.cshtml" />
+    <Content Include="Views\Sections\Create.cshtml" />
+    <Content Include="Views\Sections\Delete.cshtml" />
+    <Content Include="Views\Sections\Details.cshtml" />
+    <Content Include="Views\Sections\Edit.cshtml" />
+    <Content Include="Views\Sections\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

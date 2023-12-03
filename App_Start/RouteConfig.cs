@@ -20,15 +20,22 @@ namespace SportAssovv
             );
 
            routes.MapRoute(
-           name: "Adherent",
-           url: "Adherent/{action}/{id}",
-           defaults: new { controller = "Adherent", action = "Index", id = UrlParameter.Optional }
+           name: "Adherents",
+           url: "Adherents/{action}/{id}",
+           defaults: new { controller = "Adherents", action = "Index", id = UrlParameter.Optional }
        );
             routes.MapRoute(
            name: "AdherentRegister",
-           url: "Adherent/Register",
-           defaults: new { controller = "Adherent", action = "Register" }
+           url: "Adherents/Register",
+           defaults: new { controller = "Adherents", action = "Register" }
        );
+
+
+            routes.MapRoute(
+                name:"Admin Account",
+                url: "AdherentAccount/AdminAccount",
+                defaults: new {controlle= "AdherentAccount", action = "AdminAccount" }
+                );
         }
     }
 }

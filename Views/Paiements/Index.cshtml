@@ -1,0 +1,69 @@
+﻿@model IEnumerable<SportAssovv.Models.Paiement>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Adherent.Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DetailsPaiement.NumeroCarte)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DossierInscription.StatutInscription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MontantPaye)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatePaiement)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatutPaiement)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaiementDetailsId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adherent.Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DetailsPaiement.NumeroCarte)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DossierInscription.StatutInscription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MontantPaye)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DatePaiement)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatutPaiement)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaiementDetailsId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PaiementId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PaiementId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PaiementId })
+        </td>
+    </tr>
+}
+
+</table>

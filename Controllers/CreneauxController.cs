@@ -10,107 +10,112 @@ using SportAssovv.Models;
 
 namespace SportAssovv.Controllers
 {
-    public class DisciplineController : Controller
+    public class CreneauxController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Discipline
+        // GET: Creneaux
         public ActionResult Index()
         {
-            return View(db.Disciplines.ToList());
+            var creneaux = db.Creneaux.Include(c => c.Section);
+            return View(creneaux.ToList());
         }
 
-        // GET: Discipline/Details/5
+        // GET: Creneaux/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Discipline discipline = db.Disciplines.Find(id);
-            if (discipline == null)
+            Creneaux creneaux = db.Creneaux.Find(id);
+            if (creneaux == null)
             {
                 return HttpNotFound();
             }
-            return View(discipline);
+            return View(creneaux);
         }
 
-        // GET: Discipline/Create
+        // GET: Creneaux/Create
         public ActionResult Create()
         {
+            ViewBag.SectionId = new SelectList(db.Sections, "SectionId", "NomSection");
             return View();
         }
 
-        // POST: Discipline/Create
+        // POST: Creneaux/Create
         // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "DisciplineId,NomDiscipline")] Discipline discipline)
+        public ActionResult Create([Bind(Include = "CreneauHoraireId,JourHeureDebut,HeureFin,SectionId")] Creneaux creneaux)
         {
             if (ModelState.IsValid)
             {
-                db.Disciplines.Add(discipline);
+                db.Creneaux.Add(creneaux);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(discipline);
+            ViewBag.SectionId = new SelectList(db.Sections, "SectionId", "NomSection", creneaux.SectionId);
+            return View(creneaux);
         }
 
-        // GET: Discipline/Edit/5
+        // GET: Creneaux/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Discipline discipline = db.Disciplines.Find(id);
-            if (discipline == null)
+            Creneaux creneaux = db.Creneaux.Find(id);
+            if (creneaux == null)
             {
                 return HttpNotFound();
             }
-            return View(discipline);
+            ViewBag.SectionId = new SelectList(db.Sections, "SectionId", "NomSection", creneaux.SectionId);
+            return View(creneaux);
         }
 
-        // POST: Discipline/Edit/5
+        // POST: Creneaux/Edit/5
         // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "DisciplineId,NomDiscipline")] Discipline discipline)
+        public ActionResult Edit([Bind(Include = "CreneauHoraireId,JourHeureDebut,HeureFin,SectionId")] Creneaux creneaux)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(discipline).State = EntityState.Modified;
+                db.Entry(creneaux).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(discipline);
+            ViewBag.SectionId = new SelectList(db.Sections, "SectionId", "NomSection", creneaux.SectionId);
+            return View(creneaux);
         }
 
-        // GET: Discipline/Delete/5
+        // GET: Creneaux/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Discipline discipline = db.Disciplines.Find(id);
-            if (discipline == null)
+            Creneaux creneaux = db.Creneaux.Find(id);
+            if (creneaux == null)
             {
                 return HttpNotFound();
             }
-            return View(discipline);
+            return View(creneaux);
         }
 
-        // POST: Discipline/Delete/5
+        // POST: Creneaux/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Discipline discipline = db.Disciplines.Find(id);
-            db.Disciplines.Remove(discipline);
+            Creneaux creneaux = db.Creneaux.Find(id);
+            db.Creneaux.Remove(creneaux);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -10,112 +10,107 @@ using SportAssovv.Models;
 
 namespace SportAssovv.Controllers
 {
-    public class DossierInscriptionsController : Controller
+    public class DisciplinesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: DossierInscriptions
+        // GET: Disciplines
         public ActionResult Index()
         {
-            var dossiersInscription = db.DossiersInscription.Include(d => d.Adherent);
-            return View(dossiersInscription.ToList());
+            return View(db.Disciplines.ToList());
         }
 
-        // GET: DossierInscriptions/Details/5
+        // GET: Disciplines/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DossierInscription dossierInscription = db.DossiersInscription.Find(id);
-            if (dossierInscription == null)
+            Discipline discipline = db.Disciplines.Find(id);
+            if (discipline == null)
             {
                 return HttpNotFound();
             }
-            return View(dossierInscription);
+            return View(discipline);
         }
 
-        // GET: DossierInscriptions/Create
+        // GET: Disciplines/Create
         public ActionResult Create()
         {
-            ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom");
             return View();
         }
 
-        // POST: DossierInscriptions/Create
+        // POST: Disciplines/Create
         // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AdherentId,DossierId,StatutInscription,Certificat_medical,Assurance,Dossier_complet,Certificat_medical_data,Certificat_medical_contentType,Assurance_data,Assurance_contentType")] DossierInscription dossierInscription)
+        public ActionResult Create([Bind(Include = "DisciplineId,NomDiscipline,PlacesDisponibles")] Discipline discipline)
         {
             if (ModelState.IsValid)
             {
-                db.DossiersInscription.Add(dossierInscription);
+                db.Disciplines.Add(discipline);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", dossierInscription.AdherentId);
-            return View(dossierInscription);
+            return View(discipline);
         }
 
-        // GET: DossierInscriptions/Edit/5
+        // GET: Disciplines/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DossierInscription dossierInscription = db.DossiersInscription.Find(id);
-            if (dossierInscription == null)
+            Discipline discipline = db.Disciplines.Find(id);
+            if (discipline == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", dossierInscription.AdherentId);
-            return View(dossierInscription);
+            return View(discipline);
         }
 
-        // POST: DossierInscriptions/Edit/5
+        // POST: Disciplines/Edit/5
         // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AdherentId,DossierId,StatutInscription,Certificat_medical,Assurance,Dossier_complet,Certificat_medical_data,Certificat_medical_contentType,Assurance_data,Assurance_contentType")] DossierInscription dossierInscription)
+        public ActionResult Edit([Bind(Include = "DisciplineId,NomDiscipline,PlacesDisponibles")] Discipline discipline)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(dossierInscription).State = EntityState.Modified;
+                db.Entry(discipline).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", dossierInscription.AdherentId);
-            return View(dossierInscription);
+            return View(discipline);
         }
 
-        // GET: DossierInscriptions/Delete/5
+        // GET: Disciplines/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DossierInscription dossierInscription = db.DossiersInscription.Find(id);
-            if (dossierInscription == null)
+            Discipline discipline = db.Disciplines.Find(id);
+            if (discipline == null)
             {
                 return HttpNotFound();
             }
-            return View(dossierInscription);
+            return View(discipline);
         }
 
-        // POST: DossierInscriptions/Delete/5
+        // POST: Disciplines/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DossierInscription dossierInscription = db.DossiersInscription.Find(id);
-            db.DossiersInscription.Remove(dossierInscription);
+            Discipline discipline = db.Disciplines.Find(id);
+            db.Disciplines.Remove(discipline);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
