@@ -37,51 +37,6 @@ namespace SportAssovv.Controllers
             return View(dossierInscription);
         }
 
-        //action pour faire l'upload de files par le membre
-        public ActionResult FileMembre(HttpPostedFileBase file)
-        {
-            if (file != null && file.ContentLength > 0)
-                try
-                {
-                    string path = Path.Combine(Server.MapPath("~/Content/files"),
-                    Path.GetFileName(file.FileName));
-                    file.SaveAs(path);
-                    ViewBag.Message = "File uploaded successfully";
-                }
-                catch (Exception ex)
-                {
-                    ViewBag.Message = "ERROR:" + ex.Message.ToString();
-                }
-            else
-            {
-                ViewBag.Message = "You have not specified a file.";
-            }
-            return View();//especificar a view
-        }
-
-        //action pour faire l'upload de files par le admin
-        public ActionResult FileAdmin(HttpPostedFileBase file)
-        {
-            if (file != null && file.ContentLength > 0)
-                try
-                {
-                    string path = Path.Combine(Server.MapPath("~/Content/files"),
-                    Path.GetFileName(file.FileName));
-                    file.SaveAs(path);
-                    ViewBag.Message = "File uploaded successfully";
-                }
-                catch (Exception ex)
-                {
-                    ViewBag.Message = "ERROR:" + ex.Message.ToString();
-                }
-            else
-            {
-                ViewBag.Message = "You have not specified a file.";
-            }
-            return View();//especificar a view
-        }
-
-
         // GET: DossierInscriptions/Create
         public ActionResult Create()
         {
@@ -98,6 +53,61 @@ namespace SportAssovv.Controllers
         {
             if (ModelState.IsValid)
             {
+                db.DossierInscription.Add(dossierInscription);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", dossierInscription.AdherentId);
+            return View(dossierInscription);
+        }
+
+
+        // GET: DossierInscriptions/CreateDossierMembre
+        public ActionResult CreateDossierMembre()
+        {
+            /*ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom");
+            return View();*/
+
+            var adherentDetails = Session["AdherentDetails"] as SportAssovv.Models.Adherent;
+
+            // Liste avec l'adhrent actuel de la section
+            var adherentList = new List<SelectListItem>
+            {
+                new SelectListItem
+                {
+                    Value = adherentDetails.AdherentId.ToString(), // AdherentId c'est l'identifiant
+                    Text = adherentDetails.Nom // champs du dropdown
+                }
+            };
+
+            ViewBag.AdherentId = new SelectList(adherentList, "Value", "Text");
+    
+            return View();
+        }
+        //action pour faire l'upload de files par le membre
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateDossierMembre(DossierInscription dossierInscription, HttpPostedFileBase certificatFile, HttpPostedFileBase assuranceFile)
+        {
+            
+            if (ModelState.IsValid)
+            {
+                // Verifique se os arquivos foram fornecidos e salve-os
+                if (certificatFile != null && certificatFile.ContentLength > 0)
+                {
+                    dossierInscription.Certificat_medical_data = new byte[certificatFile.ContentLength];
+                    certificatFile.InputStream.Read(dossierInscription.Certificat_medical_data, 0, certificatFile.ContentLength);
+                    dossierInscription.Certificat_medical_contentType = certificatFile.ContentType;
+                }
+
+                if (assuranceFile != null && assuranceFile.ContentLength > 0)
+                {
+                    dossierInscription.Assurance_data = new byte[assuranceFile.ContentLength];
+                    assuranceFile.InputStream.Read(dossierInscription.Assurance_data, 0, assuranceFile.ContentLength);
+                    dossierInscription.Assurance_contentType = assuranceFile.ContentType;
+                }
+
                 db.DossierInscription.Add(dossierInscription);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -14,6 +14,15 @@
         <th>
             @Html.DisplayNameFor(model => model.NomSection)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Jour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HeureDebut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HeureFin)
+        </th>
         <th></th>
     </tr>
 
@@ -21,6 +30,15 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.NomSection)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Jour)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HeureDebut)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HeureFin)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.SectionId }) |
@@ -31,5 +49,3 @@
 }
 
 </table>
-
-<a href="@Url.Action("AdminAccount", "AdherentAccount")" class="btn btn-primary">Compte Administrateur</a>

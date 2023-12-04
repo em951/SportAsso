@@ -46,7 +46,7 @@ namespace SportAssovv.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SectionId,NomSection")] Section section)
+        public ActionResult Create([Bind(Include = "SectionId,NomSection,Jour,HeureDebut,HeureFin")] Section section)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace SportAssovv.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SectionId,NomSection")] Section section)
+        public ActionResult Edit([Bind(Include = "SectionId,NomSection,Jour,HeureDebut,HeureFin")] Section section)
         {
             if (ModelState.IsValid)
             {

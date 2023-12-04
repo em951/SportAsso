@@ -1,0 +1,57 @@
+﻿@model SportAssovv.Models.DossierInscription
+@{
+    ViewBag.Title = "Dossier Membre";
+    var adherentDetails = Session["AdherentDetails"] as SportAssovv.Models.Adherent;
+}
+
+<h2>CreateDossierMembre</h2>
+
+@using (Html.BeginForm("CreateDossierMembre", "DossierInscriptions", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    <h3>Dossier d'inscription</h3>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.AdherentId, "Adherent", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("AdherentId", ViewBag.AdherentId as SelectList, htmlAttributes: new { @class = "form-control" })
+            @*   @Html.DropDownList("AdherentId", null, htmlAttributes: new { @class = "form-control" })*@
+            @Html.ValidationMessageFor(model => model.AdherentId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <!-- Exemplo de campo de entrada para Certificat_medical -->
+    <div class="form-group">
+        @Html.LabelFor(model => model.Certificat_medical, "Certificat Medical", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="certificatFile" />
+            @Html.ValidationMessageFor(model => model.Certificat_medical, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <!-- Exemplo de campo de entrada para Assurance -->
+    <div class="form-group">
+        @Html.LabelFor(model => model.Assurance, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="assuranceFile" />
+            @Html.ValidationMessageFor(model => model.Assurance, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <!-- Outros campos de entrada necessários -->
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

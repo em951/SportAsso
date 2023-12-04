@@ -261,6 +261,10 @@
     <Compile Include="Migrations\202312041436362_InitialCreate1.designer.cs">
       <DependentUpon>202312041436362_InitialCreate1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202312042123543_AjoutColonnesSection.cs" />
+    <Compile Include="Migrations\202312042123543_AjoutColonnesSection.designer.cs">
+      <DependentUpon>202312042123543_AjoutColonnesSection.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Adherent.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -355,13 +359,6 @@
     <Content Include="Views\DossierInscriptions\Details.cshtml" />
     <Content Include="Views\DossierInscriptions\Edit.cshtml" />
     <Content Include="Views\DossierInscriptions\Index.cshtml" />
-    <Content Include="Views\Sections\Create.cshtml" />
-    <Content Include="Views\Sections\Delete.cshtml" />
-    <Content Include="Views\Sections\Details.cshtml" />
-    <Content Include="Views\Sections\Edit.cshtml" />
-    <Content Include="Views\Sections\Index.cshtml" />
-    <Content Include="Views\DossierInscriptions\CreateMembre.cshtml" />
-    <Content Include="Views\DossierInscriptions\EditMembre.cshtml" />
     <Content Include="Views\Paiements\Create.cshtml" />
     <Content Include="Views\Paiements\Delete.cshtml" />
     <Content Include="Views\Paiements\Details.cshtml" />
@@ -374,6 +371,12 @@
     <Content Include="Views\DisciplineSections\Details.cshtml" />
     <Content Include="Views\DisciplineSections\Edit.cshtml" />
     <Content Include="Views\DisciplineSections\Index.cshtml" />
+    <Content Include="Views\Sections\Create.cshtml" />
+    <Content Include="Views\Sections\Delete.cshtml" />
+    <Content Include="Views\Sections\Details.cshtml" />
+    <Content Include="Views\Sections\Edit.cshtml" />
+    <Content Include="Views\Sections\Index.cshtml" />
+    <Content Include="Views\DossierInscriptions\CreateDossierMembre.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -427,6 +430,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202312041436362_InitialCreate1.resx">
       <DependentUpon>202312041436362_InitialCreate1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312042123543_AjoutColonnesSection.resx">
+      <DependentUpon>202312042123543_AjoutColonnesSection.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

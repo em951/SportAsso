@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SportAssovv.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -34,8 +35,13 @@ namespace SportAssovv
             routes.MapRoute(
                 name:"Admin Account",
                 url: "AdherentAccount/AdminAccount",
-                defaults: new {controlle= "AdherentAccount", action = "AdminAccount" }
+                defaults: new {controller= "AdherentAccount", action = "AdminAccount" }
                 );
+
+            routes.MapRoute(
+                name: "Creation dossier",
+                url: "DossierInscriptions/CreateDossierMembre",
+                defaults: new {controller = "DossierInscriptions", action = "CreateDossierMembre" });
         }
     }
 }

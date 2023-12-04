@@ -9,8 +9,8 @@
 {
     <h2>Bienvenue, @adherentDetails.Prenom!</h2>
     <div>
-        <dl class="dl-horizontal font-weight-normal">
-            <dt>Nom : @adherentDetails.Nom</dt>
+        <dl class="dl-horizontal">
+            <dt class="font-weight-normal">Nom : @adherentDetails.Nom</dt>
             <dt>Prenom : @adherentDetails.Prenom</dt>
             <dt>Email : @adherentDetails.Email</dt>
             <dt>Adresse :  @adherentDetails.Adresse</dt>
@@ -24,7 +24,7 @@
 
     <div>
         <a href="@Url.Action("EditMembre", "Adherents")" class="btn btn-light mb-3">Editer Inscription</a>
-        <a href="@Url.Action("CreateMembre", "DossierInscriptions")" class="btn btn-light mb-3">Remplir Dossier</a>
+        <a href="@Url.Action("CreateDossierMembre", "DossierInscriptions")" class="btn btn-light mb-3">Remplir Dossier</a>
         <a href="@Url.Action("EditMembre", "DossierInscriptions")" class="btn btn-light mb-3">Editer Dossier</a>
     </div>
 }
