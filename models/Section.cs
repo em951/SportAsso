@@ -25,6 +25,12 @@ namespace SportAssovv.Models
         [Required]
         public TimeSpan HeureFin { get; set; }
 
+        [Required]
+        public String Encadrant { get; set; }
+
+        [Required]
+        public String Lieu { get; set; }
+
         // Propriétés de navigation
         public ICollection<DisciplineSection> Disciplines { get; set; }
     }
