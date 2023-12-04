@@ -15,7 +15,6 @@ namespace SportAssovv.Models
         }
 
         public DbSet<Adherent> Adherents { get; set; }
-        public DbSet<Creneaux> Creneaux { get; set; }
         public DbSet<Discipline> Disciplines { get; set; }
         public DbSet<DisciplineAdherent> DisciplineAdherents { get; set; }
         public DbSet<DisciplineSection> DisciplineSections { get; set; }

@@ -231,7 +231,6 @@
     <Compile Include="Controllers\AdherentAccountController.cs" />
     <Compile Include="Controllers\AdherentsController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
-    <Compile Include="Controllers\CreneauxController.cs" />
     <Compile Include="Controllers\DetailsPaiementsController.cs" />
     <Compile Include="Controllers\DisciplinesController.cs" />
     <Compile Include="Controllers\DisciplineSectionsController.cs" />
@@ -258,11 +257,14 @@
     <Compile Include="Migrations\202312031805351_AjustementPaiement2.designer.cs">
       <DependentUpon>202312031805351_AjustementPaiement2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202312041436362_InitialCreate1.cs" />
+    <Compile Include="Migrations\202312041436362_InitialCreate1.designer.cs">
+      <DependentUpon>202312041436362_InitialCreate1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Adherent.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Contact.cs" />
-    <Compile Include="Models\Creneaux.cs" />
     <Compile Include="Models\DetailsPaiement.cs" />
     <Compile Include="Models\Discipline.cs" />
     <Compile Include="Models\DisciplineAdherent.cs" />
@@ -348,11 +350,6 @@
     <Content Include="Views\DetailsPaiements\Details.cshtml" />
     <Content Include="Views\DetailsPaiements\Edit.cshtml" />
     <Content Include="Views\DetailsPaiements\Index.cshtml" />
-    <Content Include="Views\Creneaux\Create.cshtml" />
-    <Content Include="Views\Creneaux\Delete.cshtml" />
-    <Content Include="Views\Creneaux\Details.cshtml" />
-    <Content Include="Views\Creneaux\Edit.cshtml" />
-    <Content Include="Views\Creneaux\Index.cshtml" />
     <Content Include="Views\DossierInscriptions\Create.cshtml" />
     <Content Include="Views\DossierInscriptions\Delete.cshtml" />
     <Content Include="Views\DossierInscriptions\Details.cshtml" />
@@ -427,6 +424,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202312031805351_AjustementPaiement2.resx">
       <DependentUpon>202312031805351_AjustementPaiement2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312041436362_InitialCreate1.resx">
+      <DependentUpon>202312041436362_InitialCreate1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
