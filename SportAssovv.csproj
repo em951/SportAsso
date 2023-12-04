@@ -377,6 +377,8 @@
     <Content Include="Views\Sections\Edit.cshtml" />
     <Content Include="Views\Sections\Index.cshtml" />
     <Content Include="Views\DossierInscriptions\CreateDossierMembre.cshtml" />
+    <Content Include="Views\Disciplines\ListeDisciplines.cshtml" />
+    <Content Include="Views\Disciplines\TroisDisciplines.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,26 @@
+﻿@model List<SportAssovv.Models.Discipline>
+@{
+    ViewBag.Title = "Trois Disciplines";
+}
+
+
+
+
+<div class="container">
+    
+    <div class="row">
+        <h2 class="col-10 mt-4 mb-3">Disciplines</h2>
+        <a href="@Url.Action("ListeDisciplines", "Disciplines")" class="col mt-4 btn btn-light btn-sm mb-3 border border-black">Voir Plus</a>
+    </div>
+
+    <div class="row justify-content-center">
+        @foreach (var discipline in Model.Take(2))
+        {
+            <div class="col-md-4 text-center mb-4">
+                <img src="@Url.Content($"~/Images/{discipline.NomDiscipline}.png")" class="img-fluid rounded-2" alt="Image correspondant a la discipline" />
+                <h4>@discipline.NomDiscipline</h4>
+            </div>
+        }
+    </div>
+</div>
+

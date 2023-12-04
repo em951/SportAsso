@@ -3,17 +3,19 @@
     ViewBag.Title = "Contact";
 }
 <style>
-    .background-img {
-        background-image: url('../../Images/pageContact.png');
-        height: 100vh; /* Ajuste conforme necessário */
+    body {
+        background-image: url('@Url.Content("~/Images/pageContact.png")');
+        background-size: cover; /* Ajusta o tamanho da imagem para cobrir todo o corpo */
+        background-position: center;
     }
+
 </style>
 
-<section class="background-image">
+<section class="container">
 
-    <main class="container-fluid">
+    <main class="">
 
-        <div class="background-img">
+        <div class="">
             <div class="row justify-content-md-center">
 
 

@@ -114,6 +114,18 @@ namespace SportAssovv.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        //Montrer juste 3 disciplines pour le public
+        public ActionResult TroisDisciplines()
+
+        {
+            var troisDisciplines = db.Disciplines.Take(3).ToList();
+            return View(troisDisciplines);
+        }
+
+        //Montrer les disciplines pour le public
+        public ActionResult ListeDisciplines() {
+            return View(db.Disciplines.ToList()); 
+        }
 
         protected override void Dispose(bool disposing)
         {
