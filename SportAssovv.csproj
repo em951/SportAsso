@@ -363,7 +363,6 @@
     <Content Include="Views\Adherents\Details.cshtml" />
     <Content Include="Views\Adherents\Edit.cshtml" />
     <Content Include="Views\Adherents\Index.cshtml" />
-    <Content Include="Views\Adherents\ResetMotPasse.cshtml" />
     <Content Include="Views\Adherents\Register.cshtml" />
     <Content Include="Views\Disciplines\Create.cshtml" />
     <Content Include="Views\Disciplines\Delete.cshtml" />
@@ -396,6 +395,7 @@
     <Content Include="Views\DisciplineAdherents\Details.cshtml" />
     <Content Include="Views\DisciplineAdherents\Edit.cshtml" />
     <Content Include="Views\DisciplineAdherents\Index.cshtml" />
+    <Content Include="Views\Adherents\ResetMotPasse.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

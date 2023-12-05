@@ -176,12 +176,6 @@ namespace SportAssovv.Controllers
             return RedirectToAction("Index");
         }
 
-        // GET: DossierInscriptions/CreateMembre
-        public ActionResult CreateMembre()
-        {
-            ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom");
-            return View();
-        }
 
         protected override void Dispose(bool disposing)
         {

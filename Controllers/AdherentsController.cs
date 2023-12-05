@@ -123,54 +123,34 @@ namespace SportAssovv.Controllers
 
 
         //Action pour refaire le mot de passe
-
+        // GET: Adherents/ResetMotPasse
         public ActionResult ResetMotPasse()
         {
             return View();
         }
 
         //Action pour refaire le mot de passe
-
+        // Post: Adherents/ResetMotPasse
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult ResetMotPasse(string email, string nouvelleMotPasse)
         {
-            
-            try
+            var adherent = db.Adherents.FirstOrDefault(a => a.Email == email);
+
+            if (adherent == null)
             {
-                // Verifier si l'email existe dans la base de données 
-                var adherent = db.Adherents.SingleOrDefault(a => a.Email == email);
-
-                if (adherent == null)
-                {
-                    TempData["ErrorMessage"] = "Email non trouvé.";
-                    return View();
-                }
-
-                // Nova Senha
-                adherent.MotDePasse = nouvelleMotPasse;
-                db.SaveChanges();
-                TempData["SuccessMessage"] = "Le mot de passe a été changé avec succès!";
-
-                // Redirecionar para a página inicial
-                return RedirectToAction("~/Views/Home/Index.cshtml");
-            }
-            catch (DbEntityValidationException ex)
-            {
-                // Capturar exceção de validação e exibir detalhes no console ou logs
-                foreach (var validationErrors in ex.EntityValidationErrors)
-                {
-                    foreach (var validationError in validationErrors.ValidationErrors)
-                    {
-                        Console.WriteLine($"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
-                    }
-                }
-
-                // Você pode adicionar tratamento adicional ou redirecionar para uma página de erro
-                TempData["ErrorMessage"] = "Erro ao salvar no banco de dados. Verifique os logs para obter detalhes.";
+                ViewBag.Message = "Email inexistante";
                 return View();
             }
+
+            adherent.MotDePasse = nouvelleMotPasse;
+            db.SaveChanges();
+
+            ViewBag.Message = "Le mot de passe a été changé avec succès";
+            return View();
         }
+
+    
 
         // GET: Adherent/Register
         public ActionResult Register()
