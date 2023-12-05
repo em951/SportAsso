@@ -41,7 +41,7 @@ namespace SportAssovv.Controllers
         {
             ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom");
             ViewBag.PaiementId = new SelectList(db.DetailsPaiements, "PaiementId", "NumeroCarte");
-            ViewBag.DossierId = new SelectList(db.DossierInscription, "AdherentId", "StatutInscription");
+            ViewBag.DossierId = new SelectList(db.DossierInscription, "AdherentId", "Certificat_medical_contentType");
             return View();
         }
 
@@ -50,7 +50,7 @@ namespace SportAssovv.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PaiementId,MontantPaye,DatePaiement,StatutPaiement,AdherentId,DossierId,PaiementDetailsId")] Paiement paiement)
+        public ActionResult Create([Bind(Include = "PaiementId,MontantPaye,DatePaiement,StatutPaiement,AdherentId,DossierId")] Paiement paiement)
         {
             if (ModelState.IsValid)
             {
@@ -61,7 +61,7 @@ namespace SportAssovv.Controllers
 
             ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", paiement.AdherentId);
             ViewBag.PaiementId = new SelectList(db.DetailsPaiements, "PaiementId", "NumeroCarte", paiement.PaiementId);
-            ViewBag.DossierId = new SelectList(db.DossierInscription, "AdherentId", "StatutInscription", paiement.DossierId);
+            ViewBag.DossierId = new SelectList(db.DossierInscription, "AdherentId", "Certificat_medical_contentType", paiement.DossierId);
             return View(paiement);
         }
 
@@ -79,7 +79,7 @@ namespace SportAssovv.Controllers
             }
             ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", paiement.AdherentId);
             ViewBag.PaiementId = new SelectList(db.DetailsPaiements, "PaiementId", "NumeroCarte", paiement.PaiementId);
-            ViewBag.DossierId = new SelectList(db.DossierInscription, "AdherentId", "StatutInscription", paiement.DossierId);
+            ViewBag.DossierId = new SelectList(db.DossierInscription, "AdherentId", "Certificat_medical_contentType", paiement.DossierId);
             return View(paiement);
         }
 
@@ -88,7 +88,7 @@ namespace SportAssovv.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PaiementId,MontantPaye,DatePaiement,StatutPaiement,AdherentId,DossierId,PaiementDetailsId")] Paiement paiement)
+        public ActionResult Edit([Bind(Include = "PaiementId,MontantPaye,DatePaiement,StatutPaiement,AdherentId,DossierId")] Paiement paiement)
         {
             if (ModelState.IsValid)
             {
@@ -98,7 +98,7 @@ namespace SportAssovv.Controllers
             }
             ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", paiement.AdherentId);
             ViewBag.PaiementId = new SelectList(db.DetailsPaiements, "PaiementId", "NumeroCarte", paiement.PaiementId);
-            ViewBag.DossierId = new SelectList(db.DossierInscription, "AdherentId", "StatutInscription", paiement.DossierId);
+            ViewBag.DossierId = new SelectList(db.DossierInscription, "AdherentId", "Certificat_medical_contentType", paiement.DossierId);
             return View(paiement);
         }
 

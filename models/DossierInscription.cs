@@ -9,16 +9,15 @@ namespace SportAssovv.Models
 {
     public class DossierInscription
     {
+     
         [Key]
         [ForeignKey("Adherent")]
         public int AdherentId { get; set; }
 
 
+        //creer automatiquement l'id du dossier
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int DossierId { get; set; }
-
-        [Required]
-        [MaxLength(64)]
-        public string StatutInscription { get; set; }
 
         public Adherent Adherent { get; set; }
 

@@ -18,7 +18,7 @@
             @Html.DisplayNameFor(model => model.DetailsPaiement.NumeroCarte)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DossierInscription.StatutInscription)
+            @Html.DisplayNameFor(model => model.DossierInscription.Certificat_medical_contentType)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.MontantPaye)
@@ -28,9 +28,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.StatutPaiement)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PaiementDetailsId)
         </th>
         <th></th>
     </tr>
@@ -44,7 +41,7 @@
             @Html.DisplayFor(modelItem => item.DetailsPaiement.NumeroCarte)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DossierInscription.StatutInscription)
+            @Html.DisplayFor(modelItem => item.DossierInscription.Certificat_medical_contentType)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.MontantPaye)
@@ -54,9 +51,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.StatutPaiement)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PaiementDetailsId)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.PaiementId }) |

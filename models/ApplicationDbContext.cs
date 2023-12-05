@@ -42,6 +42,13 @@ namespace SportAssovv.Models
                    .WithMany(d => d.Paiements)
                    .HasForeignKey(p => p.DossierId);
 
+            //Relation 1..* entre discipline et sections
+            modelBuilder.Entity<Section>()
+                .HasRequired(d => d.Discipline)
+                .WithMany(s => s.Sections);
+               
+
+
         }
 
         public System.Data.Entity.DbSet<SportAssovv.Models.DetailsPaiement> DetailsPaiements { get; set; }

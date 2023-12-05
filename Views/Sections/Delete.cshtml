@@ -12,6 +12,14 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.Discipline.NomDiscipline)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Discipline.NomDiscipline)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.NomSection)
         </dt>
 
@@ -41,6 +49,22 @@
 
         <dd>
             @Html.DisplayFor(model => model.HeureFin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Encadrant)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Encadrant)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lieu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lieu)
         </dd>
 
     </dl>

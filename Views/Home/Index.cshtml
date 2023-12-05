@@ -2,11 +2,32 @@
     ViewBag.Title = "Home Page";
 }
 
+<style>
+    body {
+        background-image: url('@Url.Content("~/Images/acceuil.png")');
+        background-size: cover; 
+        background-position: center;
+    }
+    .accueil {
+        text-align: center;
+        position: relative; /* Ajout de position relative pour que les éléments position absolue à l'intérieur soient positionnés par rapport à cela */
+    }
 
-<main>
+        .accueil h1 {
+            font-size: 7em;
+            margin-top: 20px;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
+            position: absolute; /* Position absolue par rapport à l'accueil */
+            top: 50%; /* Positionne le haut du texte au centre de l'accueil */
+            left: 50%; /* Positionne la gauche du texte au centre de l'accueil */
+            transform: translate(-50%, -50%); /* Centre le texte parfaitement */
+        }
+
+</style>
+
+<main class="container">
     <div class="accueil">
-        <h1>SportAsso</h1>
-        <img src="~/Images/acceuil.png" alt="SportAsso" />
+        <!--<h1>SportAsso</h1>-->
     </div>
 </main>
 

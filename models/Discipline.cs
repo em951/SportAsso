@@ -19,7 +19,10 @@ namespace SportAssovv.Models
 
         // Navigation properties
         public ICollection<DisciplineAdherent> Adherents { get; set; }
-        public ICollection<DisciplineSection> Sections { get; set; }
+        
+        //public ICollection<DisciplineSection> Sections { get; set; }
+
+        public ICollection<Section> Sections {  get; set; }
 
     }
 

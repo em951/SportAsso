@@ -17,7 +17,8 @@ namespace SportAssovv.Controllers
         // GET: Sections
         public ActionResult Index()
         {
-            return View(db.Sections.ToList());
+            var sections = db.Sections.Include(s => s.Discipline);
+            return View(sections.ToList());
         }
 
         // GET: Sections/Details/5
@@ -38,6 +39,7 @@ namespace SportAssovv.Controllers
         // GET: Sections/Create
         public ActionResult Create()
         {
+            ViewBag.DisciplineId = new SelectList(db.Disciplines, "DisciplineId", "NomDiscipline");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace SportAssovv.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SectionId,NomSection,Jour,HeureDebut,HeureFin")] Section section)
+        public ActionResult Create([Bind(Include = "SectionId,NomSection,Jour,HeureDebut,HeureFin,Encadrant,Lieu,DisciplineId")] Section section)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,7 @@ namespace SportAssovv.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.DisciplineId = new SelectList(db.Disciplines, "DisciplineId", "NomDiscipline", section.DisciplineId);
             return View(section);
         }
 
@@ -70,6 +73,7 @@ namespace SportAssovv.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.DisciplineId = new SelectList(db.Disciplines, "DisciplineId", "NomDiscipline", section.DisciplineId);
             return View(section);
         }
 
@@ -78,7 +82,7 @@ namespace SportAssovv.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SectionId,NomSection,Jour,HeureDebut,HeureFin")] Section section)
+        public ActionResult Edit([Bind(Include = "SectionId,NomSection,Jour,HeureDebut,HeureFin,Encadrant,Lieu,DisciplineId")] Section section)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +90,7 @@ namespace SportAssovv.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.DisciplineId = new SelectList(db.Disciplines, "DisciplineId", "NomDiscipline", section.DisciplineId);
             return View(section);
         }
 

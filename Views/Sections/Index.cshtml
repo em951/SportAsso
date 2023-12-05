@@ -12,6 +12,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Discipline.NomDiscipline)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.NomSection)
         </th>
         <th>
@@ -23,11 +26,20 @@
         <th>
             @Html.DisplayNameFor(model => model.HeureFin)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Encadrant)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lieu)
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Discipline.NomDiscipline)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.NomSection)
         </td>
@@ -39,6 +51,12 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.HeureFin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Encadrant)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lieu)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.SectionId }) |

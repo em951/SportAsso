@@ -56,5 +56,8 @@ namespace SportAssovv.Models
         // Propriétés de navigation
         public ICollection<DisciplineAdherent> Disciplines { get; set; }
         public ICollection<DisciplineAdherent> DisciplineAdherents { get; set; }
+
+        //1...n adherent paiement 
+        public ICollection<Paiement> Paiements { get; set; }
     }
 }

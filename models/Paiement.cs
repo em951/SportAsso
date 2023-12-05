@@ -11,19 +11,16 @@ namespace SportAssovv.Models
     {
         public Paiement()
         {
-            DatePaiement = DateTime.Now; // Define DatePaiement com a data e hora locais atuais
+            DatePaiement = DateTime.Now; // Définit DatePaiement sur la date et l'heure locales actuelles
         }
 
         [Key]
         public int PaiementId { get; set; }
 
-        [Required]
         public int MontantPaye { get; set; }
 
-        [Required]
         public DateTime DatePaiement { get; set; }
 
-        [Required]
         [MaxLength(64)]
         public string StatutPaiement { get; set; }
 
@@ -37,9 +34,9 @@ namespace SportAssovv.Models
 
         public virtual DossierInscription DossierInscription { get; set; }
 
-        [ForeignKey("DetailsPaiement")]
-        public int PaiementDetailsId { get; set; }
         public virtual DetailsPaiement DetailsPaiement { get; set; }
+
+
     }
 }
 

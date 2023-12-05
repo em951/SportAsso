@@ -49,7 +49,7 @@ namespace SportAssovv.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AdherentId,DossierId,StatutInscription,Certificat_medical,Assurance,Dossier_complet,Certificat_medical_data,Certificat_medical_contentType,Assurance_data,Assurance_contentType")] DossierInscription dossierInscription)
+        public ActionResult Create([Bind(Include = "AdherentId,DossierId,Certificat_medical,Assurance,Dossier_complet,Certificat_medical_data,Certificat_medical_contentType,Assurance_data,Assurance_contentType")] DossierInscription dossierInscription)
         {
             if (ModelState.IsValid)
             {
@@ -138,7 +138,7 @@ namespace SportAssovv.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AdherentId,DossierId,StatutInscription,Certificat_medical,Assurance,Dossier_complet,Certificat_medical_data,Certificat_medical_contentType,Assurance_data,Assurance_contentType")] DossierInscription dossierInscription)
+        public ActionResult Edit([Bind(Include = "AdherentId,DossierId,Certificat_medical,Assurance,Dossier_complet,Certificat_medical_data,Certificat_medical_contentType,Assurance_data,Assurance_contentType")] DossierInscription dossierInscription)
         {
             if (ModelState.IsValid)
             {
@@ -183,55 +183,6 @@ namespace SportAssovv.Controllers
             return View();
         }
 
-        // POST: DossierInscriptions/CreateMembre
-        // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
-        // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreateMembre([Bind(Include = "AdherentId,DossierId,StatutInscription,Certificat_medical,Assurance,Dossier_complet,Certificat_medical_data,Certificat_medical_contentType,Assurance_data,Assurance_contentType")] DossierInscription dossierInscription)
-        {
-            if (ModelState.IsValid)
-            {
-                db.DossierInscription.Add(dossierInscription);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", dossierInscription.AdherentId);
-            return View(dossierInscription);
-        }
-
-        // GET: DossierInscriptions/EditMembre/5
-        public ActionResult EditMembre(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DossierInscription dossierInscription = db.DossierInscription.Find(id);
-            if (dossierInscription == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", dossierInscription.AdherentId);
-            return View(dossierInscription);
-        }
-
-        // POST: DossierInscriptions/EditMembre/5
-        
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult EditMembre([Bind(Include = "AdherentId,DossierId,StatutInscription,Certificat_medical,Assurance,Dossier_complet,Certificat_medical_data,Certificat_medical_contentType,Assurance_data,Assurance_contentType")] DossierInscription dossierInscription)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(dossierInscription).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", dossierInscription.AdherentId);
-            return View(dossierInscription);
-        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

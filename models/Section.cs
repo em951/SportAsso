@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -32,6 +33,9 @@ namespace SportAssovv.Models
         public String Lieu { get; set; }
 
         // Propriétés de navigation
-        public ICollection<DisciplineSection> Disciplines { get; set; }
+
+        
+        public int DisciplineId { get; set; }    
+        public Discipline Discipline { get; set; }
     }
 }
