@@ -4,16 +4,47 @@
     ViewBag.Title = "Create";
 }
 
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- jQuery UI icônes de date  -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+
+<script>
+    $(function () {
+        $(document).ready(function () {
+            $(".datepicker").datepicker({
+                dateFormat: 'yy-mm-dd', // Format de date
+                changeYear: true, // Autoriser le changement d'année
+                yearRange: "-100:+0" // Plage d'années (il y a 100 ans à l'année en cours)
+            });
+        });
+    });
+
+</script>
+
+
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Section</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DisciplineId, "DisciplineId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("DisciplineId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DisciplineId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
         <div class="form-group">
             @Html.LabelFor(model => model.NomSection, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -25,7 +56,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Jour, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Jour, new { htmlAttributes = new { @class = "form-control" } })
+                <input type="date" id="datepicker" name="Jour" class="form-control datepicker" />
                 @Html.ValidationMessageFor(model => model.Jour, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -33,7 +64,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.HeureDebut, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.HeureDebut, new { htmlAttributes = new { @class = "form-control" } })
+                <input type="time" id="timepicker" name="HeureDebut" class="form-control" />
                 @Html.ValidationMessageFor(model => model.HeureDebut, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -41,7 +72,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.HeureFin, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.HeureFin, new { htmlAttributes = new { @class = "form-control" } })
+                <input type="time" id="timepicker" name="HeureFin" class="form-control" />
                 @Html.ValidationMessageFor(model => model.HeureFin, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -62,24 +93,18 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DisciplineId, "DisciplineId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("DisciplineId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.DisciplineId, "", new { @class = "text-danger" })
-            </div>
-        </div>
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Créer" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Liste des Sections", "Index")
 </div>
-<br/>
+<br />
 <a href="@Url.Action("AdminAccount", "AdherentAccount")" class="btn btn-primary">Compte Administrateur</a>

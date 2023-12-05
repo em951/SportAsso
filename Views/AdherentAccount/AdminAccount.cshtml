@@ -7,21 +7,27 @@
 }
 
 <style>
-    .background-img {
+    body {
         background-image: url('../../Images/compteAdmin.png');
         height: 100vh;
     }
 </style>
-<section class="background-img">
+
 
     @if (adherentDetails != null)
     {<div class="container">
-            <h2 class="text-white">Compte Administrateur</h2>
+            <div class="row mb-3">
+                <h2 class="text-white">Compte Administrateur</h2>
 
-            <h2 class="text-white">Bienvenue, @adherentDetails.Prenom!</h2>
+                <h2 class="text-white">Bienvenue, @adherentDetails.Prenom!</h2>
+            </div>
 
-            <div class="row">
+       
+            <div class="row align-items-center">
                 <div class="col">
+                    <!--      <img src="@Url.Content($"~/Images/Icones/iconDisciplines.png")" class="img-fluid rounded-2" alt="Image avec l'icone discipline" />-->
+
+                    <div class="w-100"></div>
                     @Html.ActionLink("Gestion de Disciplines", "Index", "Disciplines", null, new { @class = "btn btn-light mb-3" })
                 </div>
                 <div class="col">
@@ -31,7 +37,7 @@
                     @Html.ActionLink("Liste de Messages", "Index", "Contacts", null, new { @class = "btn btn-light mb-3" })
                 </div>
             </div>
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="col">
                     @Html.ActionLink("Gestion de Sections", "Index", "Sections", null, new { @class = "btn btn-light mb-3" })
                 </div>
@@ -41,12 +47,13 @@
                 <div class="col">
                     @Html.ActionLink("Gestion de Dossiers", "Index", "DossierInscriptions", null, new { @class = "btn btn-light mb-3" })
                 </div>
-            </div>
-     </div>
+            </div>   
+        </div>
+  
     }
     else
     { <div class="container">
-            <p class="text-white">Les détails de l'administrateur n'est pas disponible.</p>
+            <p class="text-white">Les détails de l'administrateur ne sont pas disponibles.</p>
       </div>
     }
 

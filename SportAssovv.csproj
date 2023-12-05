@@ -406,6 +406,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Context\" />
+    <Folder Include="Images\Icones\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
