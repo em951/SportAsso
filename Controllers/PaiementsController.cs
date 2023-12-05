@@ -10,114 +10,116 @@ using SportAssovv.Models;
 
 namespace SportAssovv.Controllers
 {
-    public class DetailsPaiementsController : Controller
+    public class PaiementsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: DetailsPaiements
+        // GET: Paiements
         public ActionResult Index()
         {
-            var detailsPaiements = db.DetailsPaiements.Include(d => d.Paiement);
-            return View(detailsPaiements.ToList());
+            var paiements = db.Paiements.Include(p => p.Adherent).Include(p => p.DetailsPaiement);
+            return View(paiements.ToList());
         }
 
-        // GET: DetailsPaiements/Details/5
+        // GET: Paiements/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DetailsPaiement detailsPaiement = db.DetailsPaiements.Find(id);
-            if (detailsPaiement == null)
+            Paiement paiement = db.Paiements.Find(id);
+            if (paiement == null)
             {
                 return HttpNotFound();
             }
-            return View(detailsPaiement);
+            return View(paiement);
         }
 
-        // GET: DetailsPaiements/Create
+        // GET: Paiements/Create
         public ActionResult Create()
         {
-            ViewBag.PaiementId = new SelectList(db.Paiements, "PaiementId", "StatutPaiement");
+            ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom");
+            ViewBag.PaiementId = new SelectList(db.DetailsPaiements, "PaiementId", "NumeroCarte");
             return View();
         }
 
-        // POST: DetailsPaiements/Create
+        // POST: Paiements/Create
         // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PaiementId,NumeroCarte,Valeur,NomTitulaire,DateValidite")] DetailsPaiement detailsPaiement)
+        public ActionResult Create([Bind(Include = "PaiementId,MontantPaye,DatePaiement,StatutPaiement,AdherentId")] Paiement paiement)
         {
             if (ModelState.IsValid)
             {
-                db.DetailsPaiements.Add(detailsPaiement);
+                db.Paiements.Add(paiement);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.PaiementId = new SelectList(db.Paiements, "PaiementId", "StatutPaiement", detailsPaiement.PaiementId);
-            return View(detailsPaiement);
+            ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", paiement.AdherentId);
+            ViewBag.PaiementId = new SelectList(db.DetailsPaiements, "PaiementId", "NumeroCarte", paiement.PaiementId);
+            return View(paiement);
         }
 
-        //GET:  DetailsPaiements/Payer
-
-        // GET: DetailsPaiements/Edit/5
+        // GET: Paiements/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DetailsPaiement detailsPaiement = db.DetailsPaiements.Find(id);
-            if (detailsPaiement == null)
+            Paiement paiement = db.Paiements.Find(id);
+            if (paiement == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.PaiementId = new SelectList(db.Paiements, "PaiementId", "StatutPaiement", detailsPaiement.PaiementId);
-            return View(detailsPaiement);
+            ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", paiement.AdherentId);
+            ViewBag.PaiementId = new SelectList(db.DetailsPaiements, "PaiementId", "NumeroCarte", paiement.PaiementId);
+            return View(paiement);
         }
 
-        // POST: DetailsPaiements/Edit/5
+        // POST: Paiements/Edit/5
         // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PaiementId,NumeroCarte,Valeur,NomTitulaire,DateValidite")] DetailsPaiement detailsPaiement)
+        public ActionResult Edit([Bind(Include = "PaiementId,MontantPaye,DatePaiement,StatutPaiement,AdherentId")] Paiement paiement)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(detailsPaiement).State = EntityState.Modified;
+                db.Entry(paiement).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.PaiementId = new SelectList(db.Paiements, "PaiementId", "StatutPaiement", detailsPaiement.PaiementId);
-            return View(detailsPaiement);
+            ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", paiement.AdherentId);
+            ViewBag.PaiementId = new SelectList(db.DetailsPaiements, "PaiementId", "NumeroCarte", paiement.PaiementId);
+            return View(paiement);
         }
 
-        // GET: DetailsPaiements/Delete/5
+        // GET: Paiements/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DetailsPaiement detailsPaiement = db.DetailsPaiements.Find(id);
-            if (detailsPaiement == null)
+            Paiement paiement = db.Paiements.Find(id);
+            if (paiement == null)
             {
                 return HttpNotFound();
             }
-            return View(detailsPaiement);
+            return View(paiement);
         }
 
-        // POST: DetailsPaiements/Delete/5
+        // POST: Paiements/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DetailsPaiement detailsPaiement = db.DetailsPaiements.Find(id);
-            db.DetailsPaiements.Remove(detailsPaiement);
+            Paiement paiement = db.Paiements.Find(id);
+            db.Paiements.Remove(paiement);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

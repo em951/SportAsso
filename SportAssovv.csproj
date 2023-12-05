@@ -236,6 +236,7 @@
     <Compile Include="Controllers\DisciplineSectionsController.cs" />
     <Compile Include="Controllers\DossierInscriptionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PaiementsController.cs" />
     <Compile Include="Controllers\SectionsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -389,6 +390,11 @@
     <Content Include="Views\DetailsPaiements\Edit.cshtml" />
     <Content Include="Views\DetailsPaiements\Index.cshtml" />
     <Content Include="Views\DossierInscriptions\Index.cshtml" />
+    <Content Include="Views\Paiements\Create.cshtml" />
+    <Content Include="Views\Paiements\Delete.cshtml" />
+    <Content Include="Views\Paiements\Details.cshtml" />
+    <Content Include="Views\Paiements\Edit.cshtml" />
+    <Content Include="Views\Paiements\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
