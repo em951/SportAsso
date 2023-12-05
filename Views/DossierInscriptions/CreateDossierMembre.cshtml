@@ -14,6 +14,7 @@
 
     <h3>Dossier d'inscription</h3>
     <hr />
+    <!--AdhrentList avec l'adhrent qui est logged in-->
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
         @Html.LabelFor(model => model.AdherentId, "Adherent", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -24,25 +25,46 @@
         </div>
     </div>
 
-    <!-- Certificat_medical -->
+    <!-- Certificat_medical File byte[] Certificat_medical_data -->
+
     <div class="form-group">
-        @Html.LabelFor(model => model.Certificat_medical, "Certificat Medical", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Certificat_medical_data, "Certificat médical", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             <input type="file" name="certificatFile" />
-            @Html.ValidationMessageFor(model => model.Certificat_medical, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.Certificat_medical_data, "", new { @class = "text-danger" })
         </div>
     </div>
 
-    <!--Assurance -->
+    <!--check certificat medical -->
     <div class="form-group">
-        @Html.LabelFor(model => model.Assurance, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Certificat_medical)
+        @Html.CheckBoxFor(model => model.Certificat_medical)
+        @Html.ValidationMessageFor(model => model.Certificat_medical)
+    </div>
+
+    <!--Assurance file  byte[] Assurance_data-->
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Assurance_data, "Assurance", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             <input type="file" name="assuranceFile" />
-            @Html.ValidationMessageFor(model => model.Assurance, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.Assurance_data, "", new { @class = "text-danger" })
         </div>
     </div>
 
-    <!-- Outros campos de entrada necessários -->
+    <!--check assurance-->
+    <div class="form-group">
+        @Html.LabelFor(model => model.Assurance)
+        @Html.CheckBoxFor(model => model.Assurance)
+        @Html.ValidationMessageFor(model => model.Assurance)
+    </div>
+
+    <!-- Check dossier complet -->
+    <div class="form-group">
+        @Html.LabelFor(model => model.Dossier_complet)
+        @Html.CheckBoxFor(model => model.Dossier_complet)
+        @Html.ValidationMessageFor(model => model.Dossier_complet)
+    </div>
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">

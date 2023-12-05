@@ -14,15 +14,7 @@ namespace SportAssovv.Models
         [ForeignKey("Adherent")]
         public int AdherentId { get; set; }
 
-
-        //creer automatiquement l'id du dossier
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int DossierId { get; set; }
-
         public Adherent Adherent { get; set; }
-
-        [InverseProperty("DossierInscription")]
-        public ICollection<Paiement> Paiements { get; set; }
 
         public bool Certificat_medical { get; set; }
         public bool Assurance { get; set; }

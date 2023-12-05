@@ -29,11 +29,6 @@ namespace SportAssovv.Models
         [ForeignKey("AdherentId")]
         public Adherent Adherent { get; set; }
 
-        [ForeignKey("DossierInscription")]
-        public int DossierId { get; set; }
-
-        public virtual DossierInscription DossierInscription { get; set; }
-
         public virtual DetailsPaiement DetailsPaiement { get; set; }
 
 

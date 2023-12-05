@@ -49,7 +49,7 @@ namespace SportAssovv.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AdherentId,DossierId,Certificat_medical,Assurance,Dossier_complet,Certificat_medical_data,Certificat_medical_contentType,Assurance_data,Assurance_contentType")] DossierInscription dossierInscription)
+        public ActionResult Create([Bind(Include = "AdherentId,Certificat_medical,Assurance,Dossier_complet,Certificat_medical_data,Certificat_medical_contentType,Assurance_data,Assurance_contentType")] DossierInscription dossierInscription)
         {
             if (ModelState.IsValid)
             {
@@ -110,7 +110,7 @@ namespace SportAssovv.Controllers
 
                 db.DossierInscription.Add(dossierInscription);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return View("~/Views/AdherentAccount/AdherentAccount.cshtml");
             }
 
             ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", dossierInscription.AdherentId);
@@ -138,7 +138,7 @@ namespace SportAssovv.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AdherentId,DossierId,Certificat_medical,Assurance,Dossier_complet,Certificat_medical_data,Certificat_medical_contentType,Assurance_data,Assurance_contentType")] DossierInscription dossierInscription)
+        public ActionResult Edit([Bind(Include = "AdherentId,Certificat_medical,Assurance,Dossier_complet,Certificat_medical_data,Certificat_medical_contentType,Assurance_data,Assurance_contentType")] DossierInscription dossierInscription)
         {
             if (ModelState.IsValid)
             {
