@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SportAssovv.Models.DisciplineSection>
+﻿@model IEnumerable<SportAssovv.Models.DisciplineAdherent>
 
 @{
     ViewBag.Title = "Index";
@@ -12,13 +12,10 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Adherent.Nom)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Discipline.NomDiscipline)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Section.NomSection)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DisciplineSectionId)
         </th>
         <th></th>
     </tr>
@@ -26,13 +23,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.Adherent.Nom)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Discipline.NomDiscipline)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Section.NomSection)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DisciplineSectionId)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

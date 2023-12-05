@@ -232,6 +232,7 @@
     <Compile Include="Controllers\AdherentsController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\DetailsPaiementsController.cs" />
+    <Compile Include="Controllers\DisciplineAdherentsController.cs" />
     <Compile Include="Controllers\DisciplinesController.cs" />
     <Compile Include="Controllers\DisciplineSectionsController.cs" />
     <Compile Include="Controllers\DossierInscriptionsController.cs" />
@@ -371,11 +372,6 @@
     <Content Include="Views\Disciplines\Index.cshtml" />
     <Content Include="Views\Adherents\EditMembre.cshtml" />
     <Content Include="Views\Home\Disciplines.cshtml" />
-    <Content Include="Views\DisciplineSections\Create.cshtml" />
-    <Content Include="Views\DisciplineSections\Delete.cshtml" />
-    <Content Include="Views\DisciplineSections\Details.cshtml" />
-    <Content Include="Views\DisciplineSections\Edit.cshtml" />
-    <Content Include="Views\DisciplineSections\Index.cshtml" />
     <Content Include="Views\DossierInscriptions\CreateDossierMembre.cshtml" />
     <Content Include="Views\Disciplines\ListeDisciplines.cshtml" />
     <Content Include="Views\Disciplines\TroisDisciplines.cshtml" />
@@ -395,6 +391,11 @@
     <Content Include="Views\Paiements\Details.cshtml" />
     <Content Include="Views\Paiements\Edit.cshtml" />
     <Content Include="Views\Paiements\Index.cshtml" />
+    <Content Include="Views\DisciplineAdherents\Create.cshtml" />
+    <Content Include="Views\DisciplineAdherents\Delete.cshtml" />
+    <Content Include="Views\DisciplineAdherents\Details.cshtml" />
+    <Content Include="Views\DisciplineAdherents\Edit.cshtml" />
+    <Content Include="Views\DisciplineAdherents\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

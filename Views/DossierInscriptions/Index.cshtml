@@ -15,9 +15,6 @@
             @Html.DisplayNameFor(model => model.Adherent.Nom)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DossierId)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Certificat_medical)
         </th>
         <th>
@@ -45,9 +42,6 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Adherent.Nom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DossierId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Certificat_medical)
@@ -79,3 +73,4 @@
 }
 
 </table>
+<br/><a href="@Url.Action("AdminAccount", "AdherentAccount")" class="btn btn-primary">Compte Administrateur</a>

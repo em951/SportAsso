@@ -15,26 +15,39 @@
 <section class="background-img">
 
     @if (adherentDetails != null)
-    {
-        <h2 class="text-white">Compte Administrateur</h2>
+    {<div class="container">
+            <h2 class="text-white">Compte Administrateur</h2>
 
-        <h2 class="text-white">Bienvenue, @adherentDetails.Prenom!</h2>
+            <h2 class="text-white">Bienvenue, @adherentDetails.Prenom!</h2>
 
-        <div class="col-2">
-
-            @Html.ActionLink("Disciplines", "Create", "Disciplines", null, new { @class = "btn btn-light mb-3" })
-
-            @Html.ActionLink("Gestion des Adherents", "Index", "Adherents", null, new { @class = "btn btn-light mb-3" })
-
-            @Html.ActionLink("Liste de Messages", "Index", "Contacts", null, new { @class = "btn btn-light mb-3" })
-
-            @Html.ActionLink("Sections", "Create", "Sections", null, new { @class = "btn btn-light mb-3" })
-
-        </div>
+            <div class="row">
+                <div class="col">
+                    @Html.ActionLink("Gestion de Disciplines", "Index", "Disciplines", null, new { @class = "btn btn-light mb-3" })
+                </div>
+                <div class="col">
+                    @Html.ActionLink("Gestion de Adherents", "Index", "Adherents", null, new { @class = "btn btn-light mb-3" })
+                </div>
+                <div class="col">
+                    @Html.ActionLink("Liste de Messages", "Index", "Contacts", null, new { @class = "btn btn-light mb-3" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.ActionLink("Gestion de Sections", "Index", "Sections", null, new { @class = "btn btn-light mb-3" })
+                </div>
+                <div class="col">
+                    @Html.ActionLink("Gestion de Paiements", "Index", "Paiements", null, new { @class = "btn btn-light mb-3" })
+                </div>
+                <div class="col">
+                    @Html.ActionLink("Gestion de Dossiers", "Index", "DossierInscriptions", null, new { @class = "btn btn-light mb-3" })
+                </div>
+            </div>
+     </div>
     }
     else
-    {
-        <p class="text-white">Les détails de l'adhérent ne sont pas disponibles.</p>
+    { <div class="container">
+            <p class="text-white">Les détails de l'administrateur n'est pas disponible.</p>
+      </div>
     }
 
 </section>
