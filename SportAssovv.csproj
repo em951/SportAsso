@@ -398,6 +398,7 @@
     <Content Include="Views\Adherents\ResetMotPasse.cshtml" />
     <Content Include="Views\DossierInscriptions\Create.cshtml" />
     <Content Include="Views\DossierInscriptions\Edit.cshtml" />
+    <Content Include="Views\DossierInscriptions\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
