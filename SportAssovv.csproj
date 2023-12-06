@@ -396,6 +396,7 @@
     <Content Include="Views\DisciplineAdherents\Edit.cshtml" />
     <Content Include="Views\DisciplineAdherents\Index.cshtml" />
     <Content Include="Views\Adherents\ResetMotPasse.cshtml" />
+    <Content Include="Views\DossierInscriptions\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
