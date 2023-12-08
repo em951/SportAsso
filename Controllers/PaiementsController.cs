@@ -120,6 +120,45 @@ namespace SportAssovv.Controllers
             return RedirectToAction("Index");
         }
 
+        //GET: Paiements/CreateMembre
+        public ActionResult CreateMembre()
+        {
+            var adherentDetails = Session["AdherentDetails"] as SportAssovv.Models.Adherent;
+            if (adherentDetails == null)
+            {
+                // Logique pour gérer la situation où les détails du participant ne sont pas présents dans la session
+                return RedirectToAction("Error");
+            }
+
+            // instance du modèle de paiement et définissez l'AdherentId en fonction de l'utilisateur connecté
+            var paiement = new Paiement
+            {
+                AdherentId = adherentDetails.AdherentId
+            };
+
+            return View(paiement);
+
+        }
+
+        //POST: Paiements/CreateMembre
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateMembre(Paiement paiement)
+        {
+            if (ModelState.IsValid)
+            {
+                // Sauvegarder le nouveau paiement dans la base de données 
+                db.Paiements.Add(paiement);
+                db.SaveChanges();
+
+                ViewBag.SuccessMessage = "Paiement effectué avec succès!"; // message de succes 
+                                                                           
+                return View();
+            }
+
+            return View(paiement);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

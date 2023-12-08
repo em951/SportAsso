@@ -1,0 +1,133 @@
+﻿@model SportAssovv.Models.Paiement
+@{
+    ViewBag.Title = "CreateMembre";
+    var adherentDetails = Session["AdherentDetails"] as SportAssovv.Models.Adherent;
+}
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- jQuery UI -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+<script>
+    $(function () {
+        $(document).ready(function () {
+            $(".datepicker").datepicker({
+                dateFormat: 'yy-mm-dd', // Format de date
+                changeYear: true, // Autoriser le changement d'année
+                yearRange: "-100:+0" // Plage d'années (il y a 100 ans à l'année en cours)
+            });
+        });
+    });
+
+</script>
+<style>
+    body {
+        background-image: url('@Url.Content("~/Images/paiement.png")');
+        background-size: cover;
+        background-position: center;
+    }
+
+</style>
+
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+{
+    <div class="alert alert-success">
+        @ViewBag.SuccessMessage
+    </div>
+}
+
+<section class="container">
+    <h2>Payer</h2>
+    <div class="row">
+        <div class="col">
+            @using (Html.BeginForm("CreateMembre", "Paiements", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AdherentId, "Nom", htmlAttributes: new { @class = "control-label col" })
+                        <div class="col-md-10">
+                            @* Afficher le nom de l'Adhérent connecté *@
+                            @Html.DisplayFor(model => adherentDetails.Nom, new { @class = "form-control" })
+
+                            @* Inclure l'AdherentId masqué dans le formulaire à soumettre avec la soumission du formulaire *@
+                            @Html.HiddenFor(model => model.AdherentId)
+
+                            @Html.ValidationMessageFor(model => model.AdherentId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MontantPaye,"Valeur", htmlAttributes: new { @class = "control-label col" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.MontantPaye, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.MontantPaye, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DatePaiement,"Date de Paiement", htmlAttributes: new { @class = "control-label col" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DatePaiement, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DatePaiement, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NumeroCarte,"Numéro Carte", htmlAttributes: new { @class = "control-label col" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.NumeroCarte, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.NumeroCarte, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NomTitulaire,"Nom du titulaire", htmlAttributes: new { @class = "control-label col" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.NomTitulaire, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.NomTitulaire, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                                     
+                        @Html.LabelFor(model => model.DateExpiration, "Date d'expiration", htmlAttributes: new { @class = "control-label col" })
+                        <div class="col-md-10">
+                            <input type="date" id="datepicker" name="DateExpiration" class="form-control datepicker" />
+                            @Html.ValidationMessageFor(model => model.DateExpiration, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Cvv,"CVV", htmlAttributes: new { @class = "control-label col" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Cvv, new { htmlAttributes = new { @class = "form-control mb-3" } })
+                            @Html.ValidationMessageFor(model => model.Cvv, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Payer" class="btn btn-primary mb-3" />
+                            <br/>
+                            <a href="@Url.Action("AdherentAccount", "AdherentAccount")" class="btn btn-primary">Mon compte</a>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+        <div class="col">
+            <h4>Tarifs à l’année</h4>
+            <ul>
+                <li>Enfants : 105.00€</li>
+                <li>Loisirs  Adultes non compétiteurs : 115.00€</li>
+                <li>Compétitions Adultes compétiteurs : 170.00€ (maillot compétition inclus)</li>
+            </ul>
+        </div>
+    </div>
+</section>

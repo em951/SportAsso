@@ -89,5 +89,10 @@ namespace SportAssovv.Controllers
             return View("~/Views/AdherentAccount/AdminAccount.cshtml"); 
         }
 
+        public ActionResult AdherentAccount()
+        {
+            return View("~/Views/AdherentAccount/AdherentAccount.cshtml");
+        }
+
     }
 }

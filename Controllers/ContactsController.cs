@@ -38,7 +38,7 @@ namespace SportAssovv.Controllers
         // GET: Contacts/Create
         public ActionResult Create()
         {
-            return View();
+            return View("~/Views/Home/Contact.cshtml");
         }
 
         // POST: Contacts/Create
@@ -52,10 +52,11 @@ namespace SportAssovv.Controllers
             {
                 db.Contacts.Add(contact);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.SuccessMessage = "Message envoyé avec succès!";
+                return View("~/Views/Home/Contact.cshtml");
             }
 
-            return View(contact);
+            return View("~/Views/Home/Contact.cshtml");
         }
 
 

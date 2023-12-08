@@ -18,7 +18,6 @@
             <dt>Telephone : @adherentDetails.Telephone</dt>
             <dt>Date de Naissance: @adherentDetails.DateNaissance</dt>
             <dt>Mot de Passe : @adherentDetails.MotDePasse </dt>
-            <dt>Disciplines : @adherentDetails.Disciplines</dt>
         </dl>
     </div>
 
@@ -26,9 +25,8 @@
         <a href="@Url.Action("EditMembre", "Adherents")" class="btn btn-light mb-3">Editer Inscription</a>
         <a href="@Url.Action("CreateDossierMembre", "DossierInscriptions")" class="btn btn-light mb-3">Remplir Dossier</a>
         <a href="@Url.Action("EditDossierMembre", "DossierInscriptions")" class="btn btn-light mb-3">Editer Dossier</a>
-        <a href="@Url.Action("CreateMembre", "DisciplineAdherents")" class="btn btn-light mb-3")">Inscription en Discipline</a>
-
-        <button>Payer</button>
+        <a href="@Url.Action("CreateMembre", "DisciplineAdherents")" class="btn btn-light mb-3">Inscription en Discipline</a>
+        <a href="@Url.Action("CreateMembre","Paiements")" class="btn btn-light mb-3">Payer</a>
     </div>
 }
 else

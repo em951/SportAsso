@@ -6,9 +6,6 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -35,35 +32,39 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Adherent.Nom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MontantPaye)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DatePaiement)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumeroCarte)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NomTitulaire)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateExpiration)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cvv)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PaiementId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PaiementId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PaiementId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adherent.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MontantPaye)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatePaiement)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroCarte)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomTitulaire)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateExpiration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cvv)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PaiementId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PaiementId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PaiementId })
+            </td>
+        </tr>
+    }
 
 </table>
+
+</br>
+<a href="@Url.Action("AdminAccount", "AdherentAccount")" class="btn btn-primary">Compte Administrateur</a>

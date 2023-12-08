@@ -4,7 +4,7 @@
     ViewBag.Title = "Reset Mot de Passe";
 }
 
-<h2>ResetMotPasse</h2>
+<h2>Changer mot de Passe</h2>
 
 @if (!string.IsNullOrEmpty(ViewBag.Message))
 {
@@ -14,16 +14,16 @@
 @using (Html.BeginForm("ResetMotPasse", "Adherents", FormMethod.Post))
         { @Html.AntiForgeryToken()
         <div>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required />
+            <label for="email" class="control-label">Email :</label>
+            <input type="email" id="email" name="email" required class="form-control mb-3"/>
         </div>
 
         <div>
-            <label for="nouvelleMotPasse"> Nova Senha:</label>
-            <input type="password" id="nouvelleMotPasse" name="nouvelleMotPasse" required />
+            <label for="nouvelleMotPasse" class="control-label"> Nouveau mot de passe :</label>
+            <input type="password" id="nouvelleMotPasse" name="nouvelleMotPasse" required class="form-control mb-3"/>
         </div>
         <div>
-            <input type="submit" value="Changer mot de passe" />
+            <input type="submit" value="Changer mot de passe" class="btn btn-primary mb-3" />
         </div>
 
 }
