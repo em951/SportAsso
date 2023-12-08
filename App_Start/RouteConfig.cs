@@ -42,6 +42,11 @@ namespace SportAssovv
                 name: "Creation dossier",
                 url: "DossierInscriptions/CreateDossierMembre",
                 defaults: new {controller = "DossierInscriptions", action = "CreateDossierMembre" });
+
+            routes.MapRoute(
+                name:"Inscription en Discipline",
+                url: "DisciplineAdherents/Create",
+                defaults: new {controller = "DisciplineAdherents", action = "Create" });
         }
     }
 }

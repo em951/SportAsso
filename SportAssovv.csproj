@@ -385,11 +385,6 @@
     <Content Include="Views\Sections\Edit.cshtml" />
     <Content Include="Views\Sections\Index.cshtml" />
     <Content Include="Views\DossierInscriptions\Index.cshtml" />
-    <Content Include="Views\DisciplineAdherents\Create.cshtml" />
-    <Content Include="Views\DisciplineAdherents\Delete.cshtml" />
-    <Content Include="Views\DisciplineAdherents\Details.cshtml" />
-    <Content Include="Views\DisciplineAdherents\Edit.cshtml" />
-    <Content Include="Views\DisciplineAdherents\Index.cshtml" />
     <Content Include="Views\Adherents\ResetMotPasse.cshtml" />
     <Content Include="Views\DossierInscriptions\Create.cshtml" />
     <Content Include="Views\DossierInscriptions\Edit.cshtml" />
@@ -400,6 +395,11 @@
     <Content Include="Views\Paiements\Edit.cshtml" />
     <Content Include="Views\Paiements\Index.cshtml" />
     <Content Include="Views\DossierInscriptions\EditDossierMembre.cshtml" />
+    <Content Include="Views\DisciplineAdherents\Create.cshtml" />
+    <Content Include="Views\DisciplineAdherents\Delete.cshtml" />
+    <Content Include="Views\DisciplineAdherents\Details.cshtml" />
+    <Content Include="Views\DisciplineAdherents\Edit.cshtml" />
+    <Content Include="Views\DisciplineAdherents\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -22,8 +22,21 @@
 <div class="form-horizontal">
     <hr />
 
-    <!--AdhrentList avec l'adhrent qui est logged in-->
+    <!--l'adhrent qui est logged in-->
+    @Html.HiddenFor(model => model.AdherentId)
     <!-- Certificat_medical File byte[] Certificat_medical_data -->
+    <div class="form-group">
+        @Html.LabelFor(model => model.Certificat_medical_data, "Certificat", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="certificatFile" />
+            @Html.ValidationMessageFor(model => model.Certificat_medical_data, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.ActionLink("Certificat Existant", "DownloadCertificat", "DossierInscriptions", null, new { @class = "btn btn-primary" })
+    </div>
+
     <!--check certificat medical -->
     <div class="form-group">
         @Html.LabelFor(model => model.Certificat_medical)
@@ -41,7 +54,7 @@
     </div>
 
     <div class="form-group">
-        @Html.ActionLink("Assurance Existante", "DownloadFile", "DossierInscriptions", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Assurance Existante", "DownloadAssurance", "DossierInscriptions", null, new { @class = "btn btn-primary" })
     </div>
 
 
