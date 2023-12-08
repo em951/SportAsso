@@ -399,6 +399,7 @@
     <Content Include="Views\Paiements\Details.cshtml" />
     <Content Include="Views\Paiements\Edit.cshtml" />
     <Content Include="Views\Paiements\Index.cshtml" />
+    <Content Include="Views\DossierInscriptions\EditDossierMembre.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

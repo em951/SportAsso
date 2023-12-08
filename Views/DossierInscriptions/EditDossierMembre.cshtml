@@ -1,39 +1,29 @@
 ﻿@model SportAssovv.Models.DossierInscription
 @{
-    ViewBag.Title = "Dossier Membre";
+    ViewBag.Title = "EditDossierMembre";
     var adherentDetails = Session["AdherentDetails"] as SportAssovv.Models.Adherent;
+    //message de succes pour le changement de l'inscription
+    var successMessage = TempData["SuccessMessage"] as string;
 }
 
-<h2>Créer Dossier</h2>
+@if (!string.IsNullOrEmpty(successMessage))
+{
+    <div class="alert alert-success" role="alert">
+        @successMessage
+    </div>
+}
 
-@using (Html.BeginForm("CreateDossierMembre", "DossierInscriptions", FormMethod.Post, new { enctype = "multipart/form-data" }))
+<h2>Modifier le dossier d'inscription</h2>
+
+@using (Html.BeginForm("EditDossierMembre", "DossierInscriptions", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-
-    <h3>Dossier d'inscription</h3>
     <hr />
+
     <!--AdhrentList avec l'adhrent qui est logged in-->
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.AdherentId, "Adherent", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("AdherentId", ViewBag.AdherentId as SelectList, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.AdherentId, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
     <!-- Certificat_medical File byte[] Certificat_medical_data -->
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Certificat_medical_data, "Certificat médical", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <input type="file" name="certificatFile" />
-            @Html.ValidationMessageFor(model => model.Certificat_medical_data, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
     <!--check certificat medical -->
     <div class="form-group">
         @Html.LabelFor(model => model.Certificat_medical)
@@ -42,7 +32,6 @@
     </div>
 
     <!--Assurance file  byte[] Assurance_data-->
-
     <div class="form-group">
         @Html.LabelFor(model => model.Assurance_data, "Assurance", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -50,6 +39,11 @@
             @Html.ValidationMessageFor(model => model.Assurance_data, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.ActionLink("Assurance Existante", "DownloadFile", "DossierInscriptions", null, new { @class = "btn btn-primary" })
+    </div>
+
 
     <!--check assurance-->
     <div class="form-group">
@@ -71,8 +65,4 @@
         </div>
     </div>
 </div>
-}
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
 }
