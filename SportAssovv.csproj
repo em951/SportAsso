@@ -124,6 +124,9 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="PayPal, Version=1.9.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <HintPath>packages\PayPal.1.9.1\lib\net451\PayPal.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -231,7 +234,6 @@
     <Compile Include="Controllers\AdherentAccountController.cs" />
     <Compile Include="Controllers\AdherentsController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
-    <Compile Include="Controllers\DetailsPaiementsController.cs" />
     <Compile Include="Controllers\DisciplineAdherentsController.cs" />
     <Compile Include="Controllers\DisciplinesController.cs" />
     <Compile Include="Controllers\DisciplineSectionsController.cs" />
@@ -286,11 +288,14 @@
     <Compile Include="Migrations\202312051857554_UpdateDossierInscription1.designer.cs">
       <DependentUpon>202312051857554_UpdateDossierInscription1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202312071324193_DropDetailsPaiement.cs" />
+    <Compile Include="Migrations\202312071324193_DropDetailsPaiement.designer.cs">
+      <DependentUpon>202312071324193_DropDetailsPaiement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Adherent.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Contact.cs" />
-    <Compile Include="Models\DetailsPaiement.cs" />
     <Compile Include="Models\Discipline.cs" />
     <Compile Include="Models\DisciplineAdherent.cs" />
     <Compile Include="Models\DisciplineSection.cs" />
@@ -379,17 +384,7 @@
     <Content Include="Views\Sections\Details.cshtml" />
     <Content Include="Views\Sections\Edit.cshtml" />
     <Content Include="Views\Sections\Index.cshtml" />
-    <Content Include="Views\DetailsPaiements\Create.cshtml" />
-    <Content Include="Views\DetailsPaiements\Delete.cshtml" />
-    <Content Include="Views\DetailsPaiements\Details.cshtml" />
-    <Content Include="Views\DetailsPaiements\Edit.cshtml" />
-    <Content Include="Views\DetailsPaiements\Index.cshtml" />
     <Content Include="Views\DossierInscriptions\Index.cshtml" />
-    <Content Include="Views\Paiements\Create.cshtml" />
-    <Content Include="Views\Paiements\Delete.cshtml" />
-    <Content Include="Views\Paiements\Details.cshtml" />
-    <Content Include="Views\Paiements\Edit.cshtml" />
-    <Content Include="Views\Paiements\Index.cshtml" />
     <Content Include="Views\DisciplineAdherents\Create.cshtml" />
     <Content Include="Views\DisciplineAdherents\Delete.cshtml" />
     <Content Include="Views\DisciplineAdherents\Details.cshtml" />
@@ -399,6 +394,11 @@
     <Content Include="Views\DossierInscriptions\Create.cshtml" />
     <Content Include="Views\DossierInscriptions\Edit.cshtml" />
     <Content Include="Views\DossierInscriptions\Details.cshtml" />
+    <Content Include="Views\Paiements\Create.cshtml" />
+    <Content Include="Views\Paiements\Delete.cshtml" />
+    <Content Include="Views\Paiements\Details.cshtml" />
+    <Content Include="Views\Paiements\Edit.cshtml" />
+    <Content Include="Views\Paiements\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -471,6 +471,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202312051857554_UpdateDossierInscription1.resx">
       <DependentUpon>202312051857554_UpdateDossierInscription1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312071324193_DropDetailsPaiement.resx">
+      <DependentUpon>202312071324193_DropDetailsPaiement.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

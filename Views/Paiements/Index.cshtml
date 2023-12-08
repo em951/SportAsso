@@ -15,16 +15,22 @@
             @Html.DisplayNameFor(model => model.Adherent.Nom)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DetailsPaiement.NumeroCarte)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.MontantPaye)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DatePaiement)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StatutPaiement)
+            @Html.DisplayNameFor(model => model.NumeroCarte)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Valeur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomTitulaire)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateValidite)
         </th>
         <th></th>
     </tr>
@@ -35,16 +41,22 @@
             @Html.DisplayFor(modelItem => item.Adherent.Nom)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DetailsPaiement.NumeroCarte)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.MontantPaye)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DatePaiement)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.StatutPaiement)
+            @Html.DisplayFor(modelItem => item.NumeroCarte)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Valeur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomTitulaire)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateValidite)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.PaiementId }) |
@@ -55,5 +67,3 @@
 }
 
 </table>
-<br/>
-<a href="@Url.Action("AdminAccount", "AdherentAccount")" class="btn btn-primary">Compte Administrateur</a>

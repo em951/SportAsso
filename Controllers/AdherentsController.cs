@@ -177,24 +177,23 @@ namespace SportAssovv.Controllers
         }
 
         // GET: Adherents/EditMembre/5
-        public ActionResult EditMembre(int? id)
+        public ActionResult EditMembre()
         {
-            if (id == null)
+            var adherentDetails = Session["AdherentDetails"] as SportAssovv.Models.Adherent;
+
+            var adherentFromDB = db.Adherents.FirstOrDefault(a => a.AdherentId == adherentDetails.AdherentId);
+            if (adherentFromDB == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                // Adherent não encontrado, trate isso de acordo (redirecione, exiba mensagem de erro, etc.)
+                return RedirectToAction("Error");
             }
-            Adherent adherent = db.Adherents.Find(id);
-            if (adherent == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.AdherentId = new SelectList(db.DossierInscription, "AdherentId", "StatutInscription", adherent.AdherentId);
-            return View(adherent);
+
+            ViewBag.AdherentId = adherentFromDB.AdherentId;
+            return View(adherentFromDB);
+
         }
 
         // POST: Adherents/EditMembre/5
-        // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
-        // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditMembre([Bind(Include = "AdherentId,Nom,Prenom,Adresse,Email,Telephone,DateNaissance,MotDePasse,Role")] Adherent adherent)
@@ -203,9 +202,9 @@ namespace SportAssovv.Controllers
             {
                 db.Entry(adherent).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                TempData["SuccessMessage"] = "Les informations ont été mises à jour avec succès !";
+                return RedirectToAction("EditMembre");
             }
-            ViewBag.AdherentId = new SelectList(db.DossierInscription, "AdherentId", "StatutInscription", adherent.AdherentId);
             return View(adherent);
         }
 

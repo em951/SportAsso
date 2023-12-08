@@ -23,6 +23,7 @@ namespace SportAssovv.Models
         public DbSet<Section> Sections { get; set; }
         public DbSet<Contact> Contacts { get; set; }
 
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             // Configure la clé primaire composite pour DisciplineAdherent
@@ -41,11 +42,13 @@ namespace SportAssovv.Models
             modelBuilder.Entity<Section>()
                 .HasRequired(d => d.Discipline)
                 .WithMany(s => s.Sections);
-               
 
+            //creation des details de paiement et paiement 
+       
+        
 
         }
 
-        public System.Data.Entity.DbSet<SportAssovv.Models.DetailsPaiement> DetailsPaiements { get; set; }
+  
     }
 }

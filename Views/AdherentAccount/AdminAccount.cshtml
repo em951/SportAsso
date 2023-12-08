@@ -25,9 +25,7 @@
        
             <div class="row align-items-center">
                 <div class="col">
-                    <!--      <img src="@Url.Content($"~/Images/Icones/iconDisciplines.png")" class="img-fluid rounded-2" alt="Image avec l'icone discipline" />-->
-
-                    <div class="w-100"></div>
+                <div class="w-100"></div>
                     @Html.ActionLink("Gestion de Disciplines", "Index", "Disciplines", null, new { @class = "btn btn-light mb-3" })
                 </div>
                 <div class="col">
@@ -47,6 +45,9 @@
                 <div class="col">
                     @Html.ActionLink("Gestion de Dossiers", "Index", "DossierInscriptions", null, new { @class = "btn btn-light mb-3" })
                 </div>
+                <div class="col">
+                    @Html.ActionLink("Inscrits en Disciplines", "Index", " DisciplineAdherents", null, new {@class= "btn btn-light mb-3" })
+                </div>
             </div>   
         </div>
   
@@ -57,4 +58,3 @@
       </div>
     }
 
-</section>

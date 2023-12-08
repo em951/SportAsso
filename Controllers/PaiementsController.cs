@@ -17,7 +17,7 @@ namespace SportAssovv.Controllers
         // GET: Paiements
         public ActionResult Index()
         {
-            var paiements = db.Paiements.Include(p => p.Adherent).Include(p => p.DetailsPaiement);
+            var paiements = db.Paiements.Include(p => p.Adherent);
             return View(paiements.ToList());
         }
 
@@ -40,7 +40,6 @@ namespace SportAssovv.Controllers
         public ActionResult Create()
         {
             ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom");
-            ViewBag.PaiementId = new SelectList(db.DetailsPaiements, "PaiementId", "NumeroCarte");
             return View();
         }
 
@@ -49,7 +48,7 @@ namespace SportAssovv.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PaiementId,MontantPaye,DatePaiement,StatutPaiement,AdherentId")] Paiement paiement)
+        public ActionResult Create([Bind(Include = "PaiementId,AdherentId,MontantPaye,DatePaiement,NumeroCarte,Valeur,NomTitulaire,DateValidite")] Paiement paiement)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +58,6 @@ namespace SportAssovv.Controllers
             }
 
             ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", paiement.AdherentId);
-            ViewBag.PaiementId = new SelectList(db.DetailsPaiements, "PaiementId", "NumeroCarte", paiement.PaiementId);
             return View(paiement);
         }
 
@@ -76,7 +74,6 @@ namespace SportAssovv.Controllers
                 return HttpNotFound();
             }
             ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", paiement.AdherentId);
-            ViewBag.PaiementId = new SelectList(db.DetailsPaiements, "PaiementId", "NumeroCarte", paiement.PaiementId);
             return View(paiement);
         }
 
@@ -85,7 +82,7 @@ namespace SportAssovv.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PaiementId,MontantPaye,DatePaiement,StatutPaiement,AdherentId")] Paiement paiement)
+        public ActionResult Edit([Bind(Include = "PaiementId,AdherentId,MontantPaye,DatePaiement,NumeroCarte,Valeur,NomTitulaire,DateValidite")] Paiement paiement)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +91,6 @@ namespace SportAssovv.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", paiement.AdherentId);
-            ViewBag.PaiementId = new SelectList(db.DetailsPaiements, "PaiementId", "NumeroCarte", paiement.PaiementId);
             return View(paiement);
         }
 

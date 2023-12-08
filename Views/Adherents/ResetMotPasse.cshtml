@@ -8,7 +8,7 @@
 
 @if (!string.IsNullOrEmpty(ViewBag.Message))
 {
-    <div>@ViewBag.Message</div>
+    <div class="alert alert-success" role="alert">@ViewBag.Message</div>
 }
 
 @using (Html.BeginForm("ResetMotPasse", "Adherents", FormMethod.Post))

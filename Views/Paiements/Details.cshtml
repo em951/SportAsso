@@ -19,14 +19,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DetailsPaiement.NumeroCarte)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DetailsPaiement.NumeroCarte)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.MontantPaye)
         </dt>
 
@@ -43,11 +35,35 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.StatutPaiement)
+            @Html.DisplayNameFor(model => model.NumeroCarte)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.StatutPaiement)
+            @Html.DisplayFor(model => model.NumeroCarte)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valeur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valeur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomTitulaire)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomTitulaire)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateValidite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateValidite)
         </dd>
 
     </dl>
@@ -56,5 +72,3 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.PaiementId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
-<br/>
-<a href="@Url.Action("AdminAccount", "AdherentAccount")" class="btn btn-primary">Compte Administrateur</a>

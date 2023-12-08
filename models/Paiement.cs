@@ -14,22 +14,19 @@ namespace SportAssovv.Models
             DatePaiement = DateTime.Now; // Définit DatePaiement sur la date et l'heure locales actuelles
         }
 
-        [Key]
-        public int PaiementId { get; set; }
-
-        public int MontantPaye { get; set; }
-
-        public DateTime DatePaiement { get; set; }
-
-        [MaxLength(64)]
-        public string StatutPaiement { get; set; }
-
+        
+        [ForeignKey("Adherent")]
         public int AdherentId { get; set; }
-
-        [ForeignKey("AdherentId")]
         public Adherent Adherent { get; set; }
-
-        public virtual DetailsPaiement DetailsPaiement { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int PaiementId { get; set; }
+        public int MontantPaye { get; set; }
+        public DateTime DatePaiement { get; set; }
+        public string NumeroCarte { get; set; }
+        public decimal Valeur { get; set; }
+        public string NomTitulaire { get; set; }
+        public string DateValidite { get; set; }
 
 
     }

@@ -20,7 +20,6 @@
         @Html.LabelFor(model => model.AdherentId, "Adherent", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownList("AdherentId", ViewBag.AdherentId as SelectList, htmlAttributes: new { @class = "form-control" })
-            @*   @Html.DropDownList("AdherentId", null, htmlAttributes: new { @class = "form-control" })*@
             @Html.ValidationMessageFor(model => model.AdherentId, "", new { @class = "text-danger" })
         </div>
     </div>

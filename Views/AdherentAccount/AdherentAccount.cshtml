@@ -3,6 +3,7 @@
     ViewBag.Title = "AdherentAccount";
     // Vérifiez que les détails de l'adhérent sont dans la session
     var adherentDetails = Session["AdherentDetails"] as SportAssovv.Models.Adherent;
+  
 }
 
 @if (adherentDetails != null)
@@ -25,6 +26,7 @@
         <a href="@Url.Action("EditMembre", "Adherents")" class="btn btn-light mb-3">Editer Inscription</a>
         <a href="@Url.Action("CreateDossierMembre", "DossierInscriptions")" class="btn btn-light mb-3">Remplir Dossier</a>
         <a href="@Url.Action("EditMembre", "DossierInscriptions")" class="btn btn-light mb-3">Editer Dossier</a>
+        <a href="@Url.Action("Create", " DisciplineAdherents")" class="btn btn-light mb-3")">Inscription en Discipline</a>
         <button>Payer</button>
     </div>
 }
