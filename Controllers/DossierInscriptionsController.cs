@@ -240,20 +240,20 @@ namespace SportAssovv.Controllers
 
             if (adherentDetails == null)
             {
-                // Lidar com a situação em que os detalhes do Adherent não estão presentes na sessão
+                //Gérer la situation où les détails des adhérents ne sont pas présents dans la session
                 return RedirectToAction("Error");
             }
 
-            // Encontre o DossierInscription relacionado ao Adherent logado
+            //Retrouver le DossierInscription lié à l'Adhérent connecté
             var dossier = db.DossierInscription.FirstOrDefault(d => d.AdherentId == adherentDetails.AdherentId);
 
             if (dossier == null || dossier.Assurance_data == null)
             {
-                // Se o DossierInscription não for encontrado ou não houver dados de Assurance
+                // Si le DossierInscription n'est pas trouvé ou s'il n'y a pas de données d'assurance
                 return HttpNotFound();
             }
 
-            // Mapeie tipos de conteúdo específicos com suas extensões correspondentes
+            // Mappez des types de contenu spécifiques avec leurs extensions correspondantes
             var contentTypeToExtension = new Dictionary<string, string>
                 {
                     { "application/pdf", "pdf" },
@@ -262,14 +262,14 @@ namespace SportAssovv.Controllers
                  };
 
             var contentType = dossier.Assurance_contentType;
-            var extension = "txt"; // Defina uma extensão padrão caso o tipo de conteúdo não seja mapeado
+            var extension = "txt"; // Définir une extension par défaut si le type de contenu n'est pas mappé
 
             if (contentTypeToExtension.ContainsKey(contentType))
             {
                 extension = contentTypeToExtension[contentType];
             }
 
-            // Retorne o arquivo como um FileResult
+            // Renvoie le fichier en tant que FileResult
             return File(dossier.Assurance_data, contentType, "Assurance." + extension);
         }
 
@@ -280,20 +280,18 @@ namespace SportAssovv.Controllers
 
             if (adherentDetails == null)
             {
-                // Lidar com a situação em que os detalhes do Adherent não estão presentes na sessão
+                //Gérer la situation où les détails des adhérents ne sont pas présents dans la session
                 return RedirectToAction("Error");
             }
-
-            // Encontre o DossierInscription relacionado ao Adherent logado
             var dossier = db.DossierInscription.FirstOrDefault(d => d.AdherentId == adherentDetails.AdherentId);
 
             if (dossier == null || dossier.Certificat_medical_data == null)
             {
-                // Se o DossierInscription não for encontrado ou não houver dados de Assurance
+                // Si le DossierInscription n'est pas trouvé ou s'il n'y a pas de données d'assurance
                 return HttpNotFound();
             }
 
-            // Mapeie tipos de conteúdo específicos com suas extensões correspondentes
+            // Mappez des types de contenu spécifiques avec leurs extensions correspondantes
             var contentTypeToExtension = new Dictionary<string, string>
                 {
                     { "application/pdf", "pdf" },
@@ -302,15 +300,81 @@ namespace SportAssovv.Controllers
                  };
 
             var contentType = dossier.Certificat_medical_contentType;
-            var extension = "txt"; // Defina uma extensão padrão caso o tipo de conteúdo não seja mapeado
+            var extension = "txt"; // Définir une extension par défaut si le type de contenu n'est pas mappé
 
             if (contentTypeToExtension.ContainsKey(contentType))
             {
                 extension = contentTypeToExtension[contentType];
             }
 
-            // Retorne o arquivo como um FileResult
+            // Renvoie le fichier en tant que FileResult
             return File(dossier.Certificat_medical_data, contentType, "Certificat." + extension);
+        }
+
+        //view pour faire le download de chaque document du dossier
+        public ActionResult DownloadFiles()
+        {
+            var dossiersInscription = db.DossierInscription.Include(d => d.Adherent);
+            return View(dossiersInscription.ToList());
+        }
+
+        //download assurance par l'admin 
+
+        public ActionResult DownloadAssuranceAdmin(int id)
+        {   //dossier de l'adherentId
+            var dossier = db.DossierInscription.FirstOrDefault(d => d.AdherentId == id);
+            if (dossier == null || dossier.Assurance_data == null)
+            {
+                return HttpNotFound();
+            }
+            // Mappez des types de contenu spécifiques avec leurs extensions correspondantes
+            var contentTypeToExtension = new Dictionary<string, string>
+                {
+                    { "application/pdf", "pdf" },
+                    { "image/jpeg", "jpg" },
+                    { "image/png", "png"}
+                 };
+
+            var contentType = dossier.Assurance_contentType;
+            var extension = "txt"; // Définir une extension par défaut si le type de contenu n'est pas mappé
+
+            if (contentTypeToExtension.ContainsKey(contentType))
+            {
+                extension = contentTypeToExtension[contentType];
+            }
+
+            // Renvoie le fichier en tant que FileResult
+            return File(dossier.Assurance_data, contentType, "Assurance." + extension);
+
+        }
+
+        //download certificat par l'admin 
+        public ActionResult DownloadCertificatAdmin(int id)
+        {   //dossier de l'adherentId
+            var dossier = db.DossierInscription.FirstOrDefault(d => d.AdherentId == id);
+            if (dossier == null || dossier.Certificat_medical_data == null)
+            {
+                return HttpNotFound();
+            }
+            // Mappez des types de contenu spécifiques avec leurs extensions correspondantes
+            var contentTypeToExtension = new Dictionary<string, string>
+                {
+                    { "application/pdf", "pdf" },
+                    { "image/jpeg", "jpg" },
+                    { "image/png", "png"}
+                 };
+
+            var contentType = dossier.Certificat_medical_contentType;
+            var extension = "txt"; // Définir une extension par défaut si le type de contenu n'est pas mappé
+
+            if (contentTypeToExtension.ContainsKey(contentType))
+            {
+                extension = contentTypeToExtension[contentType];
+            }
+
+            // Renvoie le fichier en tant que FileResult
+            return File(dossier.Certificat_medical_data, contentType, "Certificat." + extension);
+
         }
 
 

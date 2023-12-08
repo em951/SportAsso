@@ -406,6 +406,7 @@
     <Content Include="Views\DisciplineAdherents\Details.cshtml" />
     <Content Include="Views\DisciplineAdherents\Edit.cshtml" />
     <Content Include="Views\DisciplineAdherents\Delete.cshtml" />
+    <Content Include="Views\DossierInscriptions\DownloadFiles.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

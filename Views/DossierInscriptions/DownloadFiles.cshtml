@@ -1,0 +1,82 @@
+﻿@model IEnumerable<SportAssovv.Models.DossierInscription>
+
+@{
+    ViewBag.Title = "DownloadFiles";
+}
+
+<h2>Download de fichiers</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Adherent.Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Certificat_medical)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Assurance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dossier_complet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Certificat_medical_data)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Certificat_medical_contentType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Assurance_data)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Assurance_contentType)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adherent.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Certificat_medical)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Assurance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dossier_complet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Certificat_medical_data)
+            </td>
+            <td>
+                @if (item.Assurance_data != null)
+                {
+                    <a href="@Url.Action("DownloadCertificatAdmin", "DossierInscriptions", new { id = item.AdherentId })">Download Certificat</a>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Certificat_medical_contentType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Assurance_data)
+            </td>
+            <td>
+                @if (item.Assurance_data != null)
+                {
+                    <a href="@Url.Action("DownloadAssuranceAdmin", "DossierInscriptions", new { id = item.AdherentId })">Download Assurance</a>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Assurance_contentType)
+            </td>
+        </tr>
+    }
+
+</table>
+</br>
+<a href="@Url.Action("AdminAccount", "AdherentAccount")" class="btn btn-primary">Compte Administrateur</a>
