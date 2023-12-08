@@ -12,28 +12,33 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Adherent.Nom)
+            Nom de l'adherent
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Discipline.NomDiscipline)
+            Nom de la discipline
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Adherent.Nom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Discipline.NomDiscipline)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adherent.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discipline.NomDiscipline)
+            </td>
+
+            @*            @Html.ActionLink("Edit", "Edit", new { disciplineId = item.DisciplineId, adherentId = item.AdherentId }) |
+                @Html.ActionLink("Details", "Details", new { disciplineId = item.DisciplineId, adherentId = item.AdherentId }) |
+                @Html.ActionLink("Delete", "Delete", new { disciplineId = item.DisciplineId, adherentId = item.AdherentId })
+            *@
+
+
+        </tr>
+    }
 
 </table>
+<br />
+<a href="@Url.Action("AdminAccount", "AdherentAccount")" class="btn btn-primary">Compte Administrateur</a>

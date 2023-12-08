@@ -22,17 +22,17 @@ namespace SportAssovv.Controllers
         }
 
         // GET: DisciplineAdherents/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int disciplineId, int adherentId)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DisciplineAdherent disciplineAdherent = db.DisciplineAdherents.Find(id);
+            var disciplineAdherent = db.DisciplineAdherents.Find(disciplineId, adherentId);
+            ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom");
+            ViewBag.DisciplineId = new SelectList(db.Disciplines, "DisciplineId", "NomDiscipline");
+
             if (disciplineAdherent == null)
             {
                 return HttpNotFound();
             }
+
             return View(disciplineAdherent);
         }
 
@@ -110,19 +110,16 @@ namespace SportAssovv.Controllers
         }
 
         // GET: DisciplineAdherents/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int disciplineId, int adherentId)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DisciplineAdherent disciplineAdherent = db.DisciplineAdherents.Find(id);
+            var disciplineAdherent = db.DisciplineAdherents.Find(disciplineId, adherentId);
+
             if (disciplineAdherent == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", disciplineAdherent.AdherentId);
-            ViewBag.DisciplineId = new SelectList(db.Disciplines, "DisciplineId", "NomDiscipline", disciplineAdherent.DisciplineId);
+
+            
             return View(disciplineAdherent);
         }
 
@@ -145,30 +142,38 @@ namespace SportAssovv.Controllers
         }
 
         // GET: DisciplineAdherents/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int disciplineId, int adherentId)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DisciplineAdherent disciplineAdherent = db.DisciplineAdherents.Find(id);
+            var disciplineAdherent = db.DisciplineAdherents.Find(disciplineId, adherentId);
+
             if (disciplineAdherent == null)
             {
                 return HttpNotFound();
             }
+
             return View(disciplineAdherent);
         }
 
         // POST: DisciplineAdherents/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int disciplineId, int adherentId)
         {
-            DisciplineAdherent disciplineAdherent = db.DisciplineAdherents.Find(id);
+            var disciplineAdherent = db.DisciplineAdherents.Find(disciplineId, adherentId);
+
+            if (disciplineAdherent == null)
+            {
+                return HttpNotFound();
+            }
+
             db.DisciplineAdherents.Remove(disciplineAdherent);
             db.SaveChanges();
+
             return RedirectToAction("Index");
         }
+
+       
+
 
         protected override void Dispose(bool disposing)
         {
