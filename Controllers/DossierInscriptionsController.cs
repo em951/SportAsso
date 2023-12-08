@@ -64,7 +64,6 @@ namespace SportAssovv.Controllers
 
 
         // GET: DossierInscriptions/CreateDossierMembre
-        public ActionResult CreateDossierMembre()
         {
           var adherentDetails = Session["AdherentDetails"] as SportAssovv.Models.Adherent;
 
