@@ -49,14 +49,6 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Valeur, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Valeur, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Valeur, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.NomTitulaire, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.NomTitulaire, new { htmlAttributes = new { @class = "form-control" } })
@@ -65,10 +57,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DateValidite, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DateExpiration, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DateValidite, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DateValidite, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.DateExpiration, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DateExpiration, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cvv, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Cvv, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Cvv, "", new { @class = "text-danger" })
             </div>
         </div>
 

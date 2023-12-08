@@ -292,6 +292,10 @@
     <Compile Include="Migrations\202312071324193_DropDetailsPaiement.designer.cs">
       <DependentUpon>202312071324193_DropDetailsPaiement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202312081423226_UpdateTablePaiement.cs" />
+    <Compile Include="Migrations\202312081423226_UpdateTablePaiement.designer.cs">
+      <DependentUpon>202312081423226_UpdateTablePaiement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Adherent.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -389,11 +393,6 @@
     <Content Include="Views\DossierInscriptions\Create.cshtml" />
     <Content Include="Views\DossierInscriptions\Edit.cshtml" />
     <Content Include="Views\DossierInscriptions\Details.cshtml" />
-    <Content Include="Views\Paiements\Create.cshtml" />
-    <Content Include="Views\Paiements\Delete.cshtml" />
-    <Content Include="Views\Paiements\Details.cshtml" />
-    <Content Include="Views\Paiements\Edit.cshtml" />
-    <Content Include="Views\Paiements\Index.cshtml" />
     <Content Include="Views\DossierInscriptions\EditDossierMembre.cshtml" />
     <Content Include="Views\DisciplineAdherents\Create.cshtml" />
     <Content Include="Views\DisciplineAdherents\Delete.cshtml" />
@@ -401,6 +400,11 @@
     <Content Include="Views\DisciplineAdherents\Edit.cshtml" />
     <Content Include="Views\DisciplineAdherents\Index.cshtml" />
     <Content Include="Views\DisciplineAdherents\CreateMembre.cshtml" />
+    <Content Include="Views\Paiements\Create.cshtml" />
+    <Content Include="Views\Paiements\Delete.cshtml" />
+    <Content Include="Views\Paiements\Details.cshtml" />
+    <Content Include="Views\Paiements\Edit.cshtml" />
+    <Content Include="Views\Paiements\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -476,6 +480,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202312071324193_DropDetailsPaiement.resx">
       <DependentUpon>202312071324193_DropDetailsPaiement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312081423226_UpdateTablePaiement.resx">
+      <DependentUpon>202312081423226_UpdateTablePaiement.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

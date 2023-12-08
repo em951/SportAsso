@@ -48,7 +48,7 @@ namespace SportAssovv.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PaiementId,AdherentId,MontantPaye,DatePaiement,NumeroCarte,Valeur,NomTitulaire,DateValidite")] Paiement paiement)
+        public ActionResult Create([Bind(Include = "PaiementId,AdherentId,MontantPaye,DatePaiement,NumeroCarte,NomTitulaire,DateExpiration,Cvv")] Paiement paiement)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace SportAssovv.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PaiementId,AdherentId,MontantPaye,DatePaiement,NumeroCarte,Valeur,NomTitulaire,DateValidite")] Paiement paiement)
+        public ActionResult Edit([Bind(Include = "PaiementId,AdherentId,MontantPaye,DatePaiement,NumeroCarte,NomTitulaire,DateExpiration,Cvv")] Paiement paiement)
         {
             if (ModelState.IsValid)
             {

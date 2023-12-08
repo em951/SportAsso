@@ -22,12 +22,14 @@ namespace SportAssovv.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PaiementId { get; set; }
         public int MontantPaye { get; set; }
-        public DateTime DatePaiement { get; set; }
-        public string NumeroCarte { get; set; }
-        public decimal Valeur { get; set; }
-        public string NomTitulaire { get; set; }
-        public string DateValidite { get; set; }
 
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true, NullDisplayText = "NULL")]
+        public Nullable<System.DateTime> DatePaiement { get; set; }
+        public string NumeroCarte { get; set; }
+        public string NomTitulaire { get; set; }
+        public string DateExpiration { get; set; }
+        public string Cvv { get; set; }
 
     }
 }
