@@ -63,6 +63,52 @@ namespace SportAssovv.Controllers
             return View(disciplineAdherent);
         }
 
+        //GET: DisciplineAdherents/CreateMembre
+        public ActionResult CreateMembre()
+        {
+            var adherentDetails = Session["AdherentDetails"] as SportAssovv.Models.Adherent;
+
+            // Liste avec l'adhrent actuel de la section
+            var adherentList = new List<SelectListItem>
+            {
+                new SelectListItem
+                {
+                    Value = adherentDetails.AdherentId.ToString(), // AdherentId c'est l'identifiant
+                    Text = adherentDetails.Nom // champs du dropdown
+                }
+            };
+
+            ViewBag.AdherentId = new SelectList(adherentList, "Value", "Text");
+
+            if (adherentDetails == null)
+            {
+                //Gérer la situation où les détails des adhérents ne sont pas présents dans la session
+                return RedirectToAction("Error");
+            }
+            ViewBag.DisciplineId = new SelectList(db.Disciplines, "DisciplineId", "NomDiscipline");
+
+            return View();
+
+        }
+
+        //POST: DisciplineAdherents/CreateMembre
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateMembre([Bind(Include = "DisciplineId,AdherentId")] DisciplineAdherent disciplineAdherent)
+        {
+            
+            if (ModelState.IsValid)
+            {
+                db.DisciplineAdherents.Add(disciplineAdherent);
+                db.SaveChanges();
+                return View("~/Views/AdherentAccount/AdherentAccount.cshtml");
+            }
+            ViewBag.AdherentId = new SelectList(db.Adherents, "AdherentId", "Nom", disciplineAdherent.AdherentId);
+            ViewBag.DisciplineId = new SelectList(db.Disciplines, "DisciplineId", "NomDiscipline", disciplineAdherent.DisciplineId);
+            return View(disciplineAdherent);
+
+        }
+
         // GET: DisciplineAdherents/Edit/5
         public ActionResult Edit(int? id)
         {

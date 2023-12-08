@@ -400,6 +400,7 @@
     <Content Include="Views\DisciplineAdherents\Details.cshtml" />
     <Content Include="Views\DisciplineAdherents\Edit.cshtml" />
     <Content Include="Views\DisciplineAdherents\Index.cshtml" />
+    <Content Include="Views\DisciplineAdherents\CreateMembre.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
