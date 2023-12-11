@@ -23,18 +23,12 @@
         <th>
             @Html.DisplayNameFor(model => model.DatePaiement)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NumeroCarte)
-        </th>
+       
         <th>
             @Html.DisplayNameFor(model => model.NomTitulaire)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateExpiration)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cvv)
-        </th>
+       
+    
         <th></th>
     </tr>
 
@@ -50,20 +44,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DatePaiement)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumeroCarte)
-            </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.NomTitulaire)
             </td>
+            
+           
             <td>
-                @Html.DisplayFor(modelItem => item.DateExpiration)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cvv)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.PaiementId }) |
                 @Html.ActionLink("Details", "Details", new { id = item.PaiementId }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.PaiementId })
             </td>
