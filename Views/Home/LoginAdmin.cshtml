@@ -8,6 +8,21 @@
     }
 </style>
 
+<script>
+    //button pour regarder le texte du mot de passe
+    function toggleMotPasse() {
+        var motPasse = document.getElementById("MotDePasse");
+        if (motPasse.type === "password") {
+            motPasse.type = "text";
+            document.getElementById("iconEye").className = "fa fa-eye-slash";
+
+        } else {
+            motPasse.type = "password";
+            document.getElementById("iconEye").className = "fa fa-eye";
+        }
+    }
+</script>
+
 <div class="row">
     <div class="col-md-6">
     <h2>Connexion Administrateur</h2>
@@ -16,7 +31,12 @@
         <label for="email">E-mail</label>
         <input type="email" id="Email" name="Email" class="form-control mb-3"/>
         <label for="password">Mot de Passe</label>
-        <input type="password" id="MotDePasse" name="MotDePasse" class="form-control mb-3"/>
+        <div class="input-group row">
+            <input type="password" id="MotDePasse" name="MotDePasse" class="form-control mb-3 col" />
+
+            <button id="iconEye" class="fa fa-eye col" style="background:transparent;border:none" onclick="toggleMotPasse()"></button>
+
+        </div>
         <button type="submit" class="btn btn-primary mb-3">Se connecter</button>
     }
 
