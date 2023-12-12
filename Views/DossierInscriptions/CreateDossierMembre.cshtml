@@ -4,6 +4,13 @@
     var adherentDetails = Session["AdherentDetails"] as SportAssovv.Models.Adherent;
 }
 
+<style>
+
+    body {
+        background-color: #EED7C1;
+    }
+</style>
+
 <h2>Créer Dossier</h2>
 
 @using (Html.BeginForm("CreateDossierMembre", "DossierInscriptions", FormMethod.Post, new { enctype = "multipart/form-data" }))

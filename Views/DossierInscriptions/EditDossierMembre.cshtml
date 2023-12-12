@@ -6,6 +6,13 @@
     var successMessage = TempData["SuccessMessage"] as string;
 }
 
+<style>
+
+    body {
+        background-color: #EED7C1;
+    }
+</style>
+
 @if (!string.IsNullOrEmpty(successMessage))
 {
     <div class="alert alert-success" role="alert">

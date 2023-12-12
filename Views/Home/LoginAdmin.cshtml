@@ -25,26 +25,31 @@
 
 <div class="row">
     <div class="col-md-6">
-    <h2>Connexion Administrateur</h2>
-    @using (Html.BeginForm("LoginAdmin", "AdherentAccount", FormMethod.Post))
-    {
-        <label for="email">E-mail</label>
-        <input type="email" id="Email" name="Email" class="form-control mb-3"/>
-        <label for="password">Mot de Passe</label>
-        <div class="input-group row">
-            <input type="password" id="MotDePasse" name="MotDePasse" class="form-control mb-3 col" />
+        <h2>Connexion Administrateur</h2>
+        @using (Html.BeginForm("LoginAdmin", "AdherentAccount", FormMethod.Post))
+        {
+            <label for="email">E-mail</label>
+            <input type="email" id="Email" name="Email" class="form-control mb-3" />
+            <label for="password">Mot de Passe</label>
+            <div class="input-group">
+                <input type="password" id="MotDePasse" name="MotDePasse" class="form-control mb-3" />
 
-            <button id="iconEye" class="fa fa-eye col" style="background:transparent;border:none" onclick="toggleMotPasse()"></button>
+                <button id="iconEye" class="fa fa-eye m-2" style="background:transparent;border:none" onclick="toggleMotPasse()"></button>
 
-        </div>
-        <button type="submit" class="btn btn-primary mb-3">Se connecter</button>
-    }
+            </div>
+            <button type="submit" class="btn btn-primary mb-3">Se connecter</button>
+        }
 
-    @Html.ActionLink("Mot de passe oublié ?", "ResetMotPasse", "Adherents", null, new { @class = "btn btn-primary mb-3" })
-        </div>
+        @Html.ActionLink("Mot de passe oublié ?", "ResetMotPasse", "Adherents", null, new { @class = "btn btn-primary mb-3" })
+    </div>
 
     <div class="col-md-6">
         <img src="~/Images/connexionAdmin.png" />
 
     </div>
 </div>
+
+<!-- Font Awesome librarie pour l'icone -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
