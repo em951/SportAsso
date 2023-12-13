@@ -70,7 +70,7 @@
                             <hr />
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             <div class="form-group">
-                                @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.Nome,"Nom" ,htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
                                     @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
@@ -86,7 +86,7 @@
                             </div>
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.Mensagem, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.Mensagem, "Message" ,htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
                                     @Html.TextAreaFor(model => model.Mensagem, new { @class = "form-control mb-3", rows = 5 })
                                     @Html.ValidationMessageFor(model => model.Mensagem, "", new { @class = "text-danger" })
